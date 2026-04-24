@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A1410">
+<meta name="description" content="Le Journal de Beryte Wine · récits de voyage, accords mets et vins, entretiens avec les vigneronnes et vignerons, focus cépage et carnets de dégustation.">
+<title>Le Journal · Beryte Wine · Édition N° 24 · Automne · Hiver 2026</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+/* =====================================================
+   JOURNAL · styles spécifiques archive magazine
+   ===================================================== */
+
+/* ========== BREADCRUMB ========== */
+.breadcrumb {
+  padding: 20px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-feature-settings: 'smcp';
+}
+.breadcrumb a { color: var(--c-ink-2); }
+.breadcrumb a:hover { color: var(--c-purple); }
+.breadcrumb .sep { margin: 0 10px; color: var(--c-ink-4); }
+
+/* ========== MASTHEAD ========== */
+.masthead { padding: clamp(40px, 5vw, 80px) 0 clamp(32px, 4vw, 56px); }
+.masthead .eyebrow { margin-bottom: 28px; }
+.masthead h1 { margin-bottom: 28px; max-width: 14ch; }
+.masthead .lead { max-width: 58ch; }
+
+/* ========== FEATURE ARTICLE ========== */
+.feature-article {
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+.feature-card {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 0;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  transition: all var(--t-med) var(--ease);
+}
+.feature-card:hover { box-shadow: var(--shadow-lg); border-color: var(--c-border-3); }
+.feature-card .f-media {
+  position: relative;
+  min-height: clamp(340px, 42vw, 520px);
+  background:
+    radial-gradient(ellipse at 25% 80%, rgba(200,169,107,.22) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 20%, var(--c-purple) 0%, var(--c-purple-deep) 55%, #1A0814 100%);
+  overflow: hidden;
+}
+.feature-card .f-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .55;
+  pointer-events: none;
+}
+.feature-card .f-tag {
+  position: absolute;
+  top: 24px; left: 24px;
+  z-index: 2;
+}
+.feature-card .issue-n {
+  position: absolute;
+  bottom: 24px; right: 28px;
+  z-index: 2;
+  font-family: var(--ff-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: rgba(246,241,231,.65);
+  text-transform: uppercase;
+}
+.feature-card .f-body {
+  padding: clamp(32px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.feature-card .f-eyebrow {
+  font-size: 10.5px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-purple);
+  font-feature-settings: 'smcp';
+}
+.feature-card h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  color: var(--c-ink);
+  font-variation-settings: 'opsz' 72;
+}
+.feature-card h2 em { font-style: italic; color: var(--c-purple); font-weight: 350; }
+.feature-card .f-excerpt {
+  font-size: 15.5px;
+  color: var(--c-ink-2);
+  line-height: 1.62;
+  max-width: 52ch;
+}
+.feature-card .f-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-feature-settings: 'smcp';
+}
+.feature-card .f-meta .dot { width: 3px; height: 3px; background: var(--c-gold); border-radius: 50%; }
+.feature-card .f-cta { margin-top: 8px; align-self: flex-start; }
+
+/* ========== FILTER PILLS ========== */
+.filters-bar {
+  padding: 0 0 clamp(32px, 4vw, 56px);
+  border-top: 1px solid var(--c-border);
+  padding-top: clamp(24px, 3vw, 40px);
+}
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.filters-label {
+  font-size: 10.5px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-feature-settings: 'smcp';
+  margin-right: 8px;
+}
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-family: var(--ff-body);
+  font-size: 11px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--c-border-2);
+  background: transparent;
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  font-feature-settings: 'smcp';
+}
+.filter-pill:hover { border-color: var(--c-purple); color: var(--c-purple); }
+.filter-pill .count {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  font-weight: var(--fw-semi);
+  color: var(--c-ink-3);
+  letter-spacing: 0;
+}
+.filter-pill.is-active {
+  background: var(--c-purple);
+  border-color: var(--c-purple);
+  color: var(--c-cream);
+}
+.filter-pill.is-active .count { color: rgba(246,241,231,.7); }
+
+/* ========== ARCHIVE GRID ========== */
+.archive-section { padding: 0 0 clamp(56px, 7vw, 96px); }
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 32px);
+}
+.archive-grid .post { display: contents; }
+.archive-grid .post > .ed-card { width: 100%; }
+
+/* ========== NEWSLETTER BAND ========== */
+.news-band {
+  padding: clamp(56px, 7vw, 96px) 0;
+  margin: clamp(40px, 5vw, 56px) 0 clamp(56px, 7vw, 96px);
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(32px, 4vw, 64px);
+  align-items: center;
+}
+.news-grid .eyebrow { margin-bottom: 16px; }
+.news-grid h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  font-variation-settings: 'opsz' 72;
+}
+.news-grid p {
+  font-size: 14.5px;
+  color: rgba(246,241,231,.78);
+  line-height: 1.62;
+  max-width: 48ch;
+  margin: 0;
+}
+.news-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.news-form .input {
+  flex: 1;
+  min-width: 240px;
+  background: rgba(246,241,231,.08);
+  border-color: rgba(246,241,231,.25);
+  color: var(--c-cream);
+}
+.news-form .input::placeholder { color: rgba(246,241,231,.5); }
+.news-form .input:focus {
+  background: rgba(246,241,231,.14);
+  border-color: var(--c-gold);
+  box-shadow: 0 0 0 3px rgba(200,169,107,.12);
+}
+.news-legal {
+  margin-top: 14px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(246,241,231,.5);
+  font-feature-settings: 'smcp';
+}
+
+/* ========== PAGINATION ========== */
+.pagination-wrap {
+  padding: 0 0 clamp(72px, 8vw, 120px);
+  border-top: 1px solid var(--c-border);
+  padding-top: clamp(32px, 4vw, 56px);
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ff-body);
+}
+.pagination a, .pagination span.current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  border: 1px solid transparent;
+  font-feature-settings: 'smcp';
+  transition: all var(--t-fast) var(--ease);
+}
+.pagination a:hover { border-color: var(--c-border-2); color: var(--c-purple); }
+.pagination .current {
+  background: var(--c-ink);
+  color: var(--c-cream);
+  border-color: var(--c-ink);
+}
+.pagination .sep { color: var(--c-ink-4); min-width: 0; padding: 0 2px; }
+.pagination .next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  border: 1px solid var(--c-ink);
+}
+.pagination .next:hover { background: var(--c-ink); color: var(--c-cream); }
+.pagination .next svg { width: 14px; height: 14px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .feature-card { grid-template-columns: 1fr; }
+  .feature-card .f-media { min-height: 300px; aspect-ratio: 16/10; }
+  .archive-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 680px) {
+  .archive-grid { grid-template-columns: 1fr; }
+  .filters-row { gap: 8px; }
+  .filter-pill { padding: 8px 14px; font-size: 10.5px; }
+  .pagination a, .pagination span.current { min-width: 38px; height: 38px; padding: 0 10px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/age-gate.php
+     Age verification (18+). WP: hook into woocommerce-age-gate plugin
+     ================================================================ -->
+<div class="age-gate" id="ageGate" role="dialog" aria-labelledby="ageGateTitle" aria-modal="true">
+  <div class="age-gate-card">
+    <div class="logo-wrap"><img src="assets/logo.png" alt="Beryte Wine"></div>
+    <h2 id="ageGateTitle">Avez-vous <em>l'âge légal</em><br>pour entrer ?</h2>
+    <p>L'accès à notre cave est réservé aux personnes majeures. En entrant, vous confirmez avoir 18 ans ou plus.</p>
+    <div class="actions">
+      <button type="button" class="btn btn--line" onclick="document.getElementById('ageGate').style.display='none'; try{localStorage.setItem('beryte_age_ok','1');}catch(e){}">Oui, j'entre</button>
+      <a href="https://www.google.com" class="btn btn--ghost" style="color:var(--c-ink); border-color:var(--c-border-2)">Non, quitter</a>
+    </div>
+    <p class="evin-note">L'abus d'alcool est dangereux pour la santé</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     TEMPLATE: header.php
+     Top ticker + sticky header + util nav
+     ================================================================ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <ul class="menu primary-menu">
+        <li class="menu-item menu-item-has-children">
+          <a href="nos-vins.html">La Cave
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="mega">
+            <div class="feature">
+              <span class="eyebrow">Édition d'hiver</span>
+              <h5>Notre <em>sélection</em><br>Automne · Hiver 2026</h5>
+              <p>420 cuvées choisies, 120 domaines en direct producteur, 18 pays.</p>
+              <a href="nos-vins.html" class="mega-cta">Parcourir toute la cave</a>
+            </div>
+            <div>
+              <h6>Par famille</h6>
+              <ul>
+                <li><a href="nos-vins.html">Tous les vins</a></li>
+                <li><a href="nos-vins.html?cat=rouges">Rouges</a></li>
+                <li><a href="nos-vins.html?cat=blancs">Blancs</a></li>
+                <li><a href="nos-vins.html?cat=roses">Rosés</a></li>
+                <li><a href="nos-vins.html?cat=champagnes">Champagnes</a></li>
+                <li><a href="nos-vins.html?cat=spiritueux">Spiritueux</a></li>
+                <li><a href="nos-vins.html?cat=bieres">Bières craft</a></li>
+              </ul>
+            </div>
+            <div>
+              <h6>Par terroir</h6>
+              <ul>
+                <li><a href="nos-vins.html?pays=italie">Italie <em>· 128</em></a></li>
+                <li><a href="nos-vins.html?pays=espagne">Espagne <em>· 72</em></a></li>
+                <li><a href="nos-vins.html?pays=france">France <em>· 54</em></a></li>
+                <li><a href="nos-vins.html?pays=argentine">Argentine <em>· 38</em></a></li>
+                <li><a href="liban.html">Liban <em>· 24</em></a></li>
+                <li><a href="nos-vins.html?pays=portugal">Portugal <em>· 19</em></a></li>
+                <li><a href="nos-vins.html">Voir tous les pays →</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item"><a href="liban.html">Signature Liban</a></li>
+        <li class="menu-item"><a href="journal.html" class="is-active">Le Journal</a></li>
+        <li class="menu-item"><a href="en-preparation.html">Le Club</a></li>
+        <li class="menu-item"><a href="pro.html">Espace pro</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="Beryte Wine · retour à l'accueil">
+      <span class="beryte">Beryte</span>
+      <span class="wine">Wine</span>
+    </a>
+
+    <div class="util-nav">
+      <button type="button" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="hidden-mobile">Rechercher</span>
+      </button>
+      <a href="en-preparation.html" aria-label="Connexion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="hidden-mobile">Compte</span>
+      </a>
+      <button type="button" class="cart-toggle" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="hidden-mobile">Panier</span>
+        <span class="cart-count" id="cartCount">2</span>
+      </button>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" role="main">
+
+  <!-- TEMPLATE: archive.php -->
+
+  <!-- ================================================================
+       Breadcrumb
+       ================================================================ -->
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="sep">›</span>
+      <span aria-current="page">Le Journal</span>
+    </nav>
+  </div>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/journal-masthead.php
+       ================================================================ -->
+  <section class="masthead">
+    <div class="container">
+      <div data-reveal>
+        <span class="eyebrow">Édition N° 24 · Automne · Hiver 2026</span>
+        <h1 class="display-xxl">Le <em>Journal</em><br>de la cave.</h1>
+        <p class="lead">Nos sommelières tiennent ici le carnet de la maison. Récits de vendanges, entretiens de vignerons, notes de dégustation et accords de saison. Un journal plus lent, à l'image de nos vins.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/journal-feature.php
+       Article vedette (sticky post)
+       ================================================================ -->
+  <section class="feature-article">
+    <div class="container">
+      <article class="feature-card post type-post" data-reveal>
+        <div class="f-media has-grain" aria-hidden="true">
+          <span class="pill f-tag">Article vedette</span>
+          <span class="issue-n">Dossier · N° 24/01</span>
+        </div>
+        <div class="f-body">
+          <span class="f-eyebrow">Focus millésime · Piémont</span>
+          <h2>Barolo 2020, le millésime qui <em>change tout</em>.</h2>
+          <p class="f-excerpt">Entre fraîcheur retrouvée et concentration solaire, les nebbiolos 2020 de La Morra à Serralunga réécrivent la grammaire du Piémont. Nous avons dégusté cent quatorze cuvées sur trois jours. Voici ce que nous retenons pour votre cave, et ce que vous devriez éviter d'acheter à l'aveugle.</p>
+          <div class="f-meta">
+            <span>Par Clara Nassar</span>
+            <span class="dot"></span>
+            <span>12 min de lecture</span>
+            <span class="dot"></span>
+            <span>18 novembre 2025</span>
+          </div>
+          <a href="#article" class="btn btn--purple f-cta">Lire le dossier
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/journal-filters.php
+       Taxonomy filters · category pills
+       ================================================================ -->
+  <section class="filters-bar">
+    <div class="container">
+      <div class="filters-row" data-reveal role="tablist" aria-label="Filtrer par rubrique">
+        <span class="filters-label">Rubriques</span>
+        <button class="filter-pill is-active" type="button" aria-pressed="true">Tous <span class="count">24</span></button>
+        <button class="filter-pill" type="button">Voyage <span class="count">07</span></button>
+        <button class="filter-pill" type="button">Accords <span class="count">05</span></button>
+        <button class="filter-pill" type="button">Focus cépage <span class="count">04</span></button>
+        <button class="filter-pill" type="button">Interviews <span class="count">05</span></button>
+        <button class="filter-pill" type="button">Dégustation <span class="count">03</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/journal-archive-grid.php
+       9 posts · WP: have_posts() loop
+       ================================================================ -->
+  <section class="archive-section">
+    <div class="container">
+      <div class="archive-grid">
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80&auto=format&fit=crop" alt="Vignoble de la Bekaa au petit matin" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Voyage</span>
+              <h3>Trois jours dans la <em>Bekaa</em>, à 1 000 mètres d'altitude.</h3>
+              <p class="excerpt">Carnet d'une visite chez Musar, Tourelles et Ixsir, entre vendanges tardives et cèdres millénaires.</p>
+              <span class="meta">Par Léa Boustany · 8 min · 04 novembre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=900&q=80&auto=format&fit=crop" alt="Accord fromage et vin rouge" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Accords</span>
+              <h3>Le Comté de trente mois mérite <em>mieux</em> qu'un chardonnay.</h3>
+              <p class="excerpt">Six accords inattendus pour sublimer les pâtes pressées cuites, du vin jaune au Priorat blanc.</p>
+              <span class="meta">Par Hugo Delmas · 6 min · 28 octobre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1558346489-19413928158b?w=900&q=80&auto=format&fit=crop" alt="Portrait d'un vigneron en cave" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Interviews</span>
+              <h3>Álvaro Palacios : « le Priorat m'a <em>appris la patience</em> ».</h3>
+              <p class="excerpt">Entretien exclusif avec l'homme qui a réveillé le grenache catalan, trente ans après ses débuts à Gratallops.</p>
+              <span class="meta">Par Clara Nassar · 14 min · 22 octobre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1474722883778-792e7990302f?w=900&q=80&auto=format&fit=crop" alt="Grappes de nebbiolo sur la vigne" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Focus cépage</span>
+              <h3>Le nebbiolo, ce <em>capricieux</em> qui n'aime que le Piémont.</h3>
+              <p class="excerpt">Pourquoi ce cépage né dans la brume de novembre refuse-t-il de s'exprimer ailleurs ? Enquête sur une exclusivité.</p>
+              <span class="meta">Par Sofia Ricci · 9 min · 15 octobre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format&fit=crop" alt="Table d'hiver avec verres de vin" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Accords</span>
+              <h3>Gibier à plume, l'heure d'ouvrir un <em>vieux bourgogne</em>.</h3>
+              <p class="excerpt">La bécasse, la palombe, le faisan : trois gibiers, trois Pinot noir tirés de notre cave et de notre tête.</p>
+              <span class="meta">Par Hugo Delmas · 7 min · 09 octobre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1568213816046-0ee1c42bd559?w=900&q=80&auto=format&fit=crop" alt="Vignoble de Mendoza vu d'en haut" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Voyage</span>
+              <h3>Mendoza, la Cordillère pour seul <em>horizon</em>.</h3>
+              <p class="excerpt">De Luján de Cuyo à l'Uco, comment les jeunes vigneronnes argentines réinventent le malbec en altitude.</p>
+              <span class="meta">Par Léa Boustany · 11 min · 02 octobre</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/newsletter-band.php
+       Inline newsletter after 6 articles
+       ================================================================ -->
+  <section class="news-band section--purple has-grain">
+    <div class="container">
+      <div class="news-grid" data-reveal>
+        <div>
+          <span class="eyebrow">Le rendez-vous du dimanche</span>
+          <h3>Recevez la <em>newsletter</em> de la cave.</h3>
+          <p>Un courrier, deux fois par mois. Les carnets de nos sommelières, les nouvelles cuvées en avant-première et un accord mets et vin testé en boutique. Jamais de publicité, juste du vin raconté.</p>
+        </div>
+        <div>
+          <form class="news-form" novalidate aria-label="Inscription à la newsletter">
+            <label class="sr-only" for="news-email">Votre adresse e-mail</label>
+            <input id="news-email" class="input" type="email" placeholder="prenom@domaine.fr" required>
+            <button type="submit" class="btn btn--gold">S'abonner
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </form>
+          <p class="news-legal">Sans engagement · désinscription en un clic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/journal-archive-grid.php (part 2)
+       3 derniers posts
+       ================================================================ -->
+  <section class="archive-section">
+    <div class="container">
+      <div class="archive-grid">
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=900&q=80&auto=format&fit=crop" alt="Cave de vieillissement avec barriques" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Dégustation</span>
+              <h3>Verticale Musar, dix millésimes pour <em>comprendre</em> la Bekaa.</h3>
+              <p class="excerpt">De 1998 à 2018, le château libanais mis à nu. Notes, températures, carafages : notre protocole complet.</p>
+              <span class="meta">Par Clara Nassar · 10 min · 25 septembre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1470162656305-6f429ba817bf?w=900&q=80&auto=format&fit=crop" alt="Portrait d'une vigneronne dans sa cave" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Interviews</span>
+              <h3>Elisabetta Foradori : « la terracotta a <em>tout changé</em> ».</h3>
+              <p class="excerpt">Rencontre dans le Trentin avec la vigneronne qui a osé les amphores géorgiennes, contre tous les codes alpins.</p>
+              <span class="meta">Par Sofia Ricci · 13 min · 18 septembre</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="post type-post" data-reveal>
+          <a href="#article" class="ed-card">
+            <div class="media"><img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=900&q=80&auto=format&fit=crop" alt="Vignoble du Douro en terrasses" loading="lazy"></div>
+            <div class="body">
+              <span class="category">Voyage</span>
+              <h3>Douro, la vallée <em>verticale</em> qui ne dort jamais.</h3>
+              <p class="excerpt">Quinze kilomètres en bateau, trois quintas, une révélation : le Portugal fait bien plus que du porto.</p>
+              <span class="meta">Par Léa Boustany · 9 min · 11 septembre</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/pagination.php
+       WP: paginate_links()
+       ================================================================ -->
+  <div class="pagination-wrap">
+    <div class="container">
+      <nav class="pagination" role="navigation" aria-label="Pagination">
+        <span class="current" aria-current="page">1</span>
+        <a href="#page-2">2</a>
+        <a href="#page-3">3</a>
+        <span class="sep">·</span>
+        <a href="#page-2" class="next" rel="next">Suivant
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+</main>
+
+<!-- ================================================================
+     TEMPLATE: footer.php
+     ================================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="inner">
+
+      <div class="brand-col">
+        <div class="wordmark">Beryte<em> Wine</em></div>
+        <div class="tagline">Le vin dans toute sa splendeur</div>
+        <p class="addr">
+          22 rue Saint-Exupéry<br>
+          33290 Blanquefort · France<br><br>
+          <a href="mailto:beryte.wine.shop@outlook.com" style="color:var(--c-gold)" class="link-under">beryte.wine.shop@outlook.com</a><br>
+          <a href="tel:+33000000000" style="color:rgba(246,241,231,.85)" class="link-under">+33 5 00 00 00 00</a>
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="widget-area" id="footer-widget-1">
+        <h5>La cave</h5>
+        <ul>
+          <li><a href="nos-vins.html">Tous les vins</a></li>
+          <li><a href="nos-vins.html?cat=champagnes">Champagnes</a></li>
+          <li><a href="nos-vins.html?cat=spiritueux">Spiritueux</a></li>
+          <li><a href="nos-vins.html?cat=bieres">Bières craft</a></li>
+          <li><a href="nos-vins.html?focus=coffrets">Coffrets</a></li>
+          <li><a href="nos-vins.html?focus=pepites">Pépites</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-2">
+        <h5>Terroirs</h5>
+        <ul>
+          <li><a href="nos-vins.html?pays=italie">Italie</a></li>
+          <li><a href="nos-vins.html?pays=espagne">Espagne</a></li>
+          <li><a href="nos-vins.html?pays=argentine">Argentine</a></li>
+          <li><a href="nos-vins.html?pays=france">France</a></li>
+          <li><a href="liban.html">Liban</a></li>
+          <li><a href="nos-vins.html?pays=portugal">Portugal</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-3">
+        <h5>Maison</h5>
+        <ul>
+          <li><a href="en-preparation.html">Notre histoire</a></li>
+          <li><a href="liban.html">L'ADN Liban</a></li>
+          <li><a href="journal.html">Le Journal</a></li>
+          <li><a href="en-preparation.html">Club Beryte</a></li>
+          <li><a href="pro.html">Espace pro</a></li>
+          <li><a href="en-preparation.html">Boutique physique</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-4">
+        <h5>Aide</h5>
+        <ul>
+          <li><a href="en-preparation.html">Nous contacter</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Paiement & sécurité</a></li>
+          <li><a href="#">Conservation</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="en-preparation.html">Mon compte</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div>© 2026 Beryte Wine · SIRET 123 456 789 00012 · Licence IV</div>
+      <div class="pay">
+        <span>VISA</span>
+        <span>MASTERCARD</span>
+        <span>APPLE PAY</span>
+        <span>ALMA 3×</span>
+        <span>PAYPAL</span>
+      </div>
+      <div>
+        <a href="#">Mentions légales</a> ·
+        <a href="#">CGV</a> ·
+        <a href="#">Confidentialité</a> ·
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/evin-banner.php (Loi Evin sticky)
+     ================================================================ -->
+<div class="evin" role="note">
+  <em>L'abus d'alcool est dangereux pour la santé</em> · à consommer avec modération
+</div>
+
+<script>
+/* ===============================================================
+   Beryte Journal · minimal JS
+   =============================================================== */
+
+/* Age gate cookie check */
+(function(){
+  try {
+    if (localStorage.getItem('beryte_age_ok') === '1' || document.cookie.indexOf('beryte_age_ok=1') !== -1) {
+      var g = document.getElementById('ageGate');
+      if (g) g.style.display = 'none';
+    }
+  } catch(e){}
+})();
+
+/* Sticky header shadow on scroll */
+(function(){
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function onScroll(){
+    if (window.scrollY > 8) h.classList.add('is-scrolled');
+    else h.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
+      if (e.isIntersecting) {
+        setTimeout(function(){ e.target.classList.add('is-visible'); }, i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+
+/* Filter pills · visual toggle (static demo) */
+(function(){
+  var pills = document.querySelectorAll('.filter-pill');
+  pills.forEach(function(p){
+    p.addEventListener('click', function(){
+      pills.forEach(function(x){ x.classList.remove('is-active'); x.setAttribute('aria-pressed','false'); });
+      p.classList.add('is-active');
+      p.setAttribute('aria-pressed','true');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

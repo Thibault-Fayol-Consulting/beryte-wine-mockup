@@ -456,15 +456,56 @@
   .b2b-form .row { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
-  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero { padding: 32px 0 48px; }
+  .hero-copy h1 { font-size: clamp(42px, 11vw, 64px) !important; line-height: .92; }
+  .hero-copy .lead { font-size: 14.5px; max-width: none; }
+  .hero-visual { min-height: 380px; padding: 22px; }
+  .hero-visual .bottle-frame img { height: 240px; }
+  .hero-visual .feat-title h3 { font-size: 26px; }
+  .hero-visual .price-block .ptag { font-size: 32px; }
+  .hero-visual .medaille { width: 72px; height: 72px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
+  .hero-stat .n { font-size: 28px; }
+  .hero-stat .l { font-size: 9.5px; letter-spacing: 0.18em; }
   .univers-grid { grid-template-columns: 1fr; }
-  .rail { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .univers-card { min-height: 300px; padding: 22px; }
+  .univers-card h3 { font-size: 32px; }
+  .rail { grid-template-columns: 1fr 1fr; gap: 10px; }
   .liban-figures { grid-template-columns: 1fr; gap: 16px; }
-  .logos-band .inner { justify-content: center; text-align: center; }
-  .logos-band .names { justify-content: center; gap: 20px; }
-  .hero-actions { flex-direction: column; align-items: stretch; }
+  .logos-band { padding: 32px 0; }
+  .logos-band .inner { justify-content: center; text-align: center; flex-direction: column; gap: 18px; }
+  .logos-band .names { justify-content: center; gap: 14px 22px; }
+  .logos-band .names span { font-size: 14px; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
   .hero-actions .btn { width: 100%; }
   .hero-actions a.link-under { text-align: center; }
+  .ed-feat .left, .ed-feat .right { padding: 32px 24px; }
+  .ed-feat .left .issue-bg { font-size: 120px; margin-bottom: -28px; }
+  .ed-feat .right h2 { font-size: 40px; }
+  .liban-wrap .text h2 { font-size: clamp(30px, 8vw, 42px) !important; }
+  .liban-visual .quote-card { left: 18px; right: 18px; bottom: 18px; padding: 22px; }
+  .liban-visual .quote-card p { font-size: 15.5px; }
+  .b2b-grid h2 { font-size: clamp(30px, 8vw, 44px) !important; }
+  .b2b-form { padding: 24px 20px; }
+  .b2b-form h3 { font-size: 22px; }
+  .journal-rail { gap: 18px; }
+  .ed-card .body { padding: 22px 22px 24px; }
+  .ed-card h3 { font-size: 20px; }
+  .finder-card { padding: 28px 20px; }
+  .finder-step label { font-size: 9.5px; letter-spacing: 0.18em; }
+  .rail-head h2 { font-size: clamp(26px, 7vw, 36px) !important; }
+  .rail-nav .rail-btn { width: 38px; height: 38px; }
+  .region-card { aspect-ratio: 4/5; padding: 18px; }
+  .region-card .r-name { font-size: 18px; }
+  .region-card .r-count { font-size: 9.5px; letter-spacing: 0.16em; }
+  .region-card .r-flag { width: 26px; height: 26px; top: 14px; right: 14px; }
+  .region-card .r-glyph { font-size: 56px; }
+  .box-card { padding: 28px 22px; }
+  .box-card h3 { font-size: 24px; }
+  .box-card .price-n { font-size: 30px; }
+  .somm-card .portrait .initial { font-size: 72px; }
+  .somm-card .body { padding: 18px 18px 22px; }
+  .somm-card h4 { font-size: 19px; }
 }
 
 /* ========================================================
@@ -920,6 +961,31 @@
     </div>
   </div>
 </header>
+
+<!-- TEMPLATE: template-parts/mobile-drawer.php -->
+<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="mobile-drawer-inner">
+    <span class="eyebrow">Navigation</span>
+    <ul class="menu">
+      <li><a href="nos-vins.html"><span class="num">I</span>La <em>Cave</em></a></li>
+      <li><a href="nos-vins.html?cat=champagnes"><span class="num">II</span>Champagnes</a></li>
+      <li><a href="nos-vins.html?cat=spiritueux"><span class="num">III</span>Spiritueux</a></li>
+      <li><a href="liban.html"><span class="num">IV</span>Signature <em>Liban</em></a></li>
+      <li><a href="journal.html"><span class="num">V</span>Le Journal</a></li>
+      <li><a href="en-preparation.html"><span class="num">VI</span>Le <em>Club</em></a></li>
+      <li><a href="pro.html"><span class="num">VII</span>Espace pro</a></li>
+      <li><a href="contact.html"><span class="num">VIII</span>Nous contacter</a></li>
+    </ul>
+    <div class="drawer-foot">
+      <div class="util-row">
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Rechercher</a>
+        <a href="en-preparation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Compte</a>
+      </div>
+      <div>22 rue Saint-Exupéry · 33290 Blanquefort</div>
+      <div><a href="tel:+33000000000">+33 5 00 00 00 00</a> · <a href="mailto:beryte.wine.shop@outlook.com">beryte.wine.shop@outlook.com</a></div>
+    </div>
+  </div>
+</aside>
 
 <main id="main" role="main">
 
@@ -2019,6 +2085,19 @@ function bumpCart(){
   if (prev) prev.addEventListener('click', function(){ rail.scrollBy({ left: -step(), behavior: 'smooth' }); });
   if (next) next.addEventListener('click', function(){ rail.scrollBy({ left:  step(), behavior: 'smooth' }); });
 })();
+
+/* Mobile drawer toggle */
+(function(){
+  var burger = document.querySelector('.burger');
+  var drawer = document.getElementById('mobileDrawer');
+  if (!burger || !drawer) return;
+  function close(){ drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden','true'); burger.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); document.body.classList.remove('no-scroll'); }
+  function open(){ drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden','false'); burger.classList.add('is-open'); burger.setAttribute('aria-expanded','true'); document.body.classList.add('no-scroll'); }
+  burger.addEventListener('click', function(){ burger.classList.contains('is-open') ? close() : open(); });
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+
 </script>
 
 </body>

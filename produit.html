@@ -926,6 +926,31 @@
   </div>
 </header>
 
+<!-- TEMPLATE: template-parts/mobile-drawer.php -->
+<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="mobile-drawer-inner">
+    <span class="eyebrow">Navigation</span>
+    <ul class="menu">
+      <li><a href="nos-vins.html"><span class="num">I</span>La <em>Cave</em></a></li>
+      <li><a href="nos-vins.html?cat=champagnes"><span class="num">II</span>Champagnes</a></li>
+      <li><a href="nos-vins.html?cat=spiritueux"><span class="num">III</span>Spiritueux</a></li>
+      <li><a href="liban.html"><span class="num">IV</span>Signature <em>Liban</em></a></li>
+      <li><a href="journal.html"><span class="num">V</span>Le Journal</a></li>
+      <li><a href="en-preparation.html"><span class="num">VI</span>Le <em>Club</em></a></li>
+      <li><a href="pro.html"><span class="num">VII</span>Espace pro</a></li>
+      <li><a href="contact.html"><span class="num">VIII</span>Nous contacter</a></li>
+    </ul>
+    <div class="drawer-foot">
+      <div class="util-row">
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Rechercher</a>
+        <a href="en-preparation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Compte</a>
+      </div>
+      <div>22 rue Saint-Exupéry · 33290 Blanquefort</div>
+      <div><a href="tel:+33000000000">+33 5 00 00 00 00</a> · <a href="mailto:beryte.wine.shop@outlook.com">beryte.wine.shop@outlook.com</a></div>
+    </div>
+  </div>
+</aside>
+
 <!-- ================================================================
      TEMPLATE: template-parts/breadcrumb.php
      WooCommerce breadcrumb navigation
@@ -1762,6 +1787,19 @@ function bumpCart(){
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+/* Mobile drawer toggle */
+(function(){
+  var burger = document.querySelector('.burger');
+  var drawer = document.getElementById('mobileDrawer');
+  if (!burger || !drawer) return;
+  function close(){ drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden','true'); burger.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); document.body.classList.remove('no-scroll'); }
+  function open(){ drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden','false'); burger.classList.add('is-open'); burger.setAttribute('aria-expanded','true'); document.body.classList.add('no-scroll'); }
+  burger.addEventListener('click', function(){ burger.classList.contains('is-open') ? close() : open(); });
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+
 </script>
 
 </body>
