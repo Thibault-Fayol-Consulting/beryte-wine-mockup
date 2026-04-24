@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A1410">
+<meta name="description" content="Nos vins · catalogue complet Beryte Wine. 380 références sélectionnées, de l'Italie à l'Argentine, du Priorat à la Bekaa libanaise. Caviste indépendant à Blanquefort.">
+<title>Nos vins · Catalogue · Beryte Wine</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+/* =====================================================
+   NOS VINS · styles spécifiques catalogue
+   ===================================================== */
+
+/* ========== PAGE HEADER (hero catalogue) ========== */
+.cat-hero {
+  padding: clamp(40px, 5vw, 80px) 0 clamp(32px, 4vw, 56px);
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-cream);
+}
+.cat-hero .eyebrow { margin-bottom: 22px; }
+.cat-hero h1 { margin-bottom: 24px; max-width: 16ch; }
+.cat-hero .lead { margin-bottom: 28px; max-width: 58ch; }
+.cat-hero .breadcrumb {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cat-hero .breadcrumb a { color: var(--c-ink-3); transition: color var(--t-fast) var(--ease); }
+.cat-hero .breadcrumb a:hover { color: var(--c-purple); }
+.cat-hero .breadcrumb .sep { color: var(--c-gold); }
+.cat-hero .breadcrumb .current { color: var(--c-ink); }
+
+/* ========== SHOP LAYOUT ========== */
+.shop-wrap {
+  padding: clamp(32px, 4vw, 56px) 0 clamp(40px, 5vw, 72px);
+}
+.shop-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* ========== FILTER RAIL ========== */
+.filter-rail {
+  position: sticky;
+  top: 88px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  padding: 4px 0 0;
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border-3) transparent;
+}
+.filter-rail::-webkit-scrollbar { width: 6px; }
+.filter-rail::-webkit-scrollbar-thumb { background: var(--c-border-3); }
+
+.filter-rail .rail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid var(--c-border);
+}
+.filter-rail .rail-head .t {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  font-feature-settings: 'smcp';
+}
+.filter-rail .rail-head .reset {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-purple);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+}
+.filter-rail .rail-head .reset:hover { text-decoration: underline; }
+
+.filter-rail .mobile-close {
+  display: none;
+  width: 32px; height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c-border);
+  color: var(--c-ink);
+}
+
+/* Accordion */
+.filter-sec {
+  border-bottom: 1px solid var(--c-border);
+}
+.filter-sec > summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  font-feature-settings: 'smcp';
+  transition: background var(--t-fast) var(--ease);
+}
+.filter-sec > summary:hover { background: var(--c-cream); }
+.filter-sec > summary::-webkit-details-marker { display: none; }
+.filter-sec > summary::marker { display: none; content: ''; }
+.filter-sec > summary .chev {
+  width: 10px; height: 10px;
+  color: var(--c-ink-3);
+  transition: transform var(--t-med) var(--ease);
+}
+.filter-sec[open] > summary .chev { transform: rotate(180deg); }
+.filter-sec .opts {
+  padding: 4px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.filter-opt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  color: var(--c-ink-2);
+  cursor: pointer;
+  line-height: 1.3;
+  transition: color var(--t-fast) var(--ease);
+}
+.filter-opt:hover { color: var(--c-ink); }
+.filter-opt .left { display: flex; align-items: center; gap: 10px; }
+.filter-opt input[type="checkbox"],
+.filter-opt input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px; height: 15px;
+  border: 1px solid var(--c-border-2);
+  background: var(--c-white);
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.filter-opt input[type="checkbox"]:checked,
+.filter-opt input[type="radio"]:checked {
+  background: var(--c-purple);
+  border-color: var(--c-purple);
+}
+.filter-opt input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 5px;
+  width: 3px; height: 7px;
+  border: solid var(--c-cream);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.filter-opt .count {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: var(--c-ink-3);
+  font-weight: 500;
+}
+
+/* Color swatches row */
+.color-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.color-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid var(--c-border);
+  background: var(--c-white);
+  font-size: 11.5px;
+  color: var(--c-ink-2);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  font-feature-settings: 'smcp';
+  letter-spacing: 0.04em;
+}
+.color-chip:hover { border-color: var(--c-ink-3); color: var(--c-ink); }
+.color-chip.is-on { background: var(--c-ink); color: var(--c-cream); border-color: var(--c-ink); }
+.color-chip .dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,.1);
+}
+.color-chip .dot.rouge   { background: #6E1F2E; }
+.color-chip .dot.blanc   { background: #EFE3B5; }
+.color-chip .dot.rose    { background: #E2A8AC; }
+.color-chip .dot.effer   { background: linear-gradient(135deg, #F2E5B8 0%, #E8C98A 100%); }
+
+/* Price slider visual */
+.price-slider {
+  position: relative;
+  height: 32px;
+  margin: 4px 0 12px;
+}
+.price-slider .track {
+  position: absolute;
+  left: 0; right: 0; top: 14px;
+  height: 2px;
+  background: var(--c-border-2);
+}
+.price-slider .fill {
+  position: absolute;
+  left: 18%; right: 32%; top: 14px;
+  height: 2px;
+  background: var(--c-purple);
+}
+.price-slider .handle {
+  position: absolute;
+  top: 9px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--c-cream);
+  border: 1.5px solid var(--c-purple);
+  cursor: grab;
+}
+.price-slider .handle.h1 { left: calc(18% - 6px); }
+.price-slider .handle.h2 { left: calc(68% - 6px); }
+.price-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--ff-mono);
+  font-size: 10.5px;
+  color: var(--c-ink-3);
+  margin-bottom: 10px;
+}
+
+/* Pills labels chooser */
+.pill-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--c-border-2);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-2);
+  font-feature-settings: 'smcp';
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  background: var(--c-white);
+}
+.pill-filter:hover { border-color: var(--c-purple); color: var(--c-purple); }
+.pill-filter.is-on { background: var(--c-purple); color: var(--c-cream); border-color: var(--c-purple); }
+
+/* ========== TOOLBAR ========== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.toolbar .count-txt {
+  font-size: 13.5px;
+  color: var(--c-ink-2);
+}
+.toolbar .count-txt strong {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--c-ink);
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: -0.01em;
+  margin-right: 4px;
+}
+.toolbar .tb-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.toolbar .sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toolbar .sort-wrap label {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+}
+.toolbar select.sort {
+  padding: 8px 32px 8px 12px;
+  border: 1px solid var(--c-border);
+  background: var(--c-white);
+  font-size: 13px;
+  color: var(--c-ink);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' fill='none' stroke='%235A4D3F' stroke-width='1.2'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  min-height: 36px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.toolbar select.sort:focus { outline: none; border-color: var(--c-purple); }
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--c-border);
+  background: var(--c-white);
+}
+.view-toggle button {
+  width: 36px; height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-ink-3);
+  transition: all var(--t-fast) var(--ease);
+  border-right: 1px solid var(--c-border);
+}
+.view-toggle button:last-child { border-right: none; }
+.view-toggle button.is-on { background: var(--c-ink); color: var(--c-cream); }
+.view-toggle svg { width: 15px; height: 15px; }
+
+.filter-open-mobile {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--c-ink);
+  background: var(--c-ink);
+  color: var(--c-cream);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+}
+.filter-open-mobile svg { width: 14px; height: 14px; }
+
+/* ========== GRID ========== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ========== EDITORIAL PUSH ========== */
+.ed-push {
+  grid-column: 1 / -1;
+  position: relative;
+  background: radial-gradient(ellipse at 22% 30%, var(--c-purple) 0%, var(--c-purple-deep) 55%, #1A0814 100%);
+  color: var(--c-cream);
+  padding: clamp(32px, 4vw, 56px);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 32px;
+  align-items: center;
+  border: 1px solid var(--c-purple-deep);
+  text-decoration: none;
+}
+.ed-push::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .4;
+  pointer-events: none;
+}
+.ed-push > * { position: relative; z-index: 2; }
+.ed-push .ey {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-feature-settings: 'smcp';
+}
+.ed-push .ey::before {
+  content: "";
+  width: 32px; height: 1px;
+  background: var(--c-gold);
+}
+.ed-push h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--c-cream);
+  font-variation-settings: 'opsz' 96;
+  margin-bottom: 18px;
+  max-width: 18ch;
+}
+.ed-push h3 em { color: var(--c-gold); font-weight: 350; }
+.ed-push p {
+  color: rgba(246,241,231,.82);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 48ch;
+}
+.ed-push .ed-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border: 1px solid var(--c-gold);
+  color: var(--c-gold);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+  transition: all var(--t-med) var(--ease);
+}
+.ed-push .ed-cta:hover { background: var(--c-gold); color: var(--c-ink); }
+.ed-push .ed-cta svg { width: 14px; height: 14px; }
+.ed-push .ed-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-left: 32px;
+  border-left: 1px solid rgba(200,169,107,.3);
+}
+.ed-push .ed-side .qt {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 350;
+  line-height: 1.35;
+  color: var(--c-cream);
+  font-variation-settings: 'opsz' 48;
+}
+.ed-push .ed-side .qt em { color: var(--c-gold); }
+.ed-push .ed-side .by {
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(246,241,231,.6);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+}
+
+/* ========== PAGINATION ========== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 32px;
+  border-top: 1px solid var(--c-border);
+  flex-wrap: wrap;
+}
+.pagination a, .pagination span {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c-border);
+  background: var(--c-white);
+  color: var(--c-ink-2);
+  font-family: var(--ff-display);
+  font-size: 15px;
+  font-variant-numeric: oldstyle-nums;
+  font-weight: 350;
+  transition: all var(--t-fast) var(--ease);
+}
+.pagination a:hover { border-color: var(--c-ink); color: var(--c-ink); }
+.pagination .is-current {
+  background: var(--c-ink);
+  color: var(--c-cream);
+  border-color: var(--c-ink);
+}
+.pagination .gap {
+  border: none;
+  background: none;
+  color: var(--c-gold);
+  font-family: var(--ff-body);
+  min-width: 20px;
+  padding: 0 6px;
+  letter-spacing: 0.15em;
+}
+.pagination .next {
+  gap: 10px;
+  padding: 0 18px;
+  font-family: var(--ff-body);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+  color: var(--c-ink);
+}
+.pagination .next:hover { background: var(--c-ink); color: var(--c-cream); }
+.pagination .next svg { width: 14px; height: 14px; }
+
+/* ========== LIST VIEW (when toggled) ========== */
+.products-grid.is-list { grid-template-columns: 1fr; }
+.products-grid.is-list .pcard { flex-direction: row; }
+.products-grid.is-list .pcard .media { width: 180px; flex-shrink: 0; aspect-ratio: auto; }
+.products-grid.is-list .pcard .body { padding: 20px 24px; }
+
+/* ========== MOBILE BOTTOM SHEET ========== */
+.filter-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,20,16,.55);
+  z-index: 60;
+  backdrop-filter: blur(4px);
+}
+.filter-backdrop.is-open { display: block; animation: fadeIn .25s var(--ease); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .shop-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .ed-push { grid-template-columns: 1fr; }
+  .ed-push .ed-side { padding-left: 0; padding-top: 20px; border-left: none; border-top: 1px solid rgba(200,169,107,.3); }
+  .filter-open-mobile { display: inline-flex; }
+  .filter-rail {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    top: auto;
+    z-index: 70;
+    max-height: 80vh;
+    transform: translateY(100%);
+    transition: transform var(--t-med) var(--ease);
+    border: none;
+    border-top: 3px solid var(--c-purple);
+    box-shadow: var(--shadow-xl);
+  }
+  .filter-rail.is-open { transform: translateY(0); }
+  .filter-rail .mobile-close { display: inline-flex; }
+}
+@media (max-width: 680px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .toolbar { padding: 12px 16px; gap: 12px; }
+  .toolbar .count-txt strong { font-size: 15px; }
+  .cat-hero h1 { font-size: clamp(36px, 9vw, 52px); }
+  .pagination a, .pagination span { min-width: 36px; height: 36px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/age-gate.php
+     Age verification (18+). WP: hook into woocommerce-age-gate plugin
+     ================================================================ -->
+<div class="age-gate" id="ageGate" role="dialog" aria-labelledby="ageGateTitle" aria-modal="true">
+  <div class="age-gate-card">
+    <div class="logo-wrap"><img src="assets/logo.png" alt="Beryte Wine"></div>
+    <h2 id="ageGateTitle">Avez-vous <em>l'âge légal</em><br>pour entrer ?</h2>
+    <p>L'accès à notre cave est réservé aux personnes majeures. En entrant, vous confirmez avoir 18 ans ou plus.</p>
+    <div class="actions">
+      <button type="button" class="btn btn--line" onclick="document.getElementById('ageGate').style.display='none'; try{localStorage.setItem('beryte_age_ok','1');}catch(e){}">Oui, j'entre</button>
+      <a href="https://www.google.com" class="btn btn--ghost" style="color:var(--c-ink); border-color:var(--c-border-2)">Non, quitter</a>
+    </div>
+    <p class="evin-note">L'abus d'alcool est dangereux pour la santé</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     TEMPLATE: header.php
+     Top ticker + sticky header + util nav
+     ================================================================ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+    <!-- Duplication pour la boucle infinie -->
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <ul class="menu primary-menu" style="display:flex; gap:28px; list-style:none; margin:0; padding:0;">
+        <li class="menu-item current-menu-item"><a href="nos-vins.html" class="is-active">Nos vins</a></li>
+        <li class="menu-item"><a href="nos-vins.html#champagnes">Champagnes</a></li>
+        <li class="menu-item"><a href="nos-vins.html#spiritueux">Spiritueux</a></li>
+        <li class="menu-item"><a href="liban.html">Liban</a></li>
+        <li class="menu-item"><a href="en-preparation.html">Journal</a></li>
+        <li class="menu-item"><a href="pro.html">Espace pro</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="Beryte Wine · retour à l'accueil">
+      <span class="beryte">Beryte</span>
+      <span class="wine">Wine</span>
+    </a>
+
+    <div class="util-nav">
+      <button type="button" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="hidden-mobile">Rechercher</span>
+      </button>
+      <a href="en-preparation.html" aria-label="Connexion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="hidden-mobile">Compte</span>
+      </a>
+      <button type="button" class="cart-toggle" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="hidden-mobile">Panier</span>
+        <span class="cart-count" id="cartCount">2</span>
+      </button>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" role="main">
+
+  <!-- ================================================================
+       TEMPLATE: archive-product.php
+       WooCommerce shop archive · page header
+       ================================================================ -->
+  <section class="cat-hero" data-reveal>
+    <div class="container">
+      <span class="eyebrow">Toute la cave</span>
+      <h1 class="display-xl">Nos <em>vins</em>, 380 références.</h1>
+      <p class="lead">Un catalogue vivant qui respire au rythme des récoltes. De la Bekaa libanaise aux coteaux de Mendoza, du Piémont au Priorat catalan, chaque bouteille a été choisie pour son caractère, jamais pour son étiquette.</p>
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a>
+        <span class="sep">·</span>
+        <span class="current">Nos vins</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: archive-product.php · main shop layout
+       Left sidebar (woocommerce-product-filters) + product grid
+       ================================================================ -->
+  <section class="shop-wrap">
+    <div class="container">
+      <div class="shop-grid">
+
+        <!-- ============================================================
+             FILTER RAIL · WP sidebar-shop
+             ============================================================ -->
+        <aside class="filter-rail widget_price_filter" id="filterRail" aria-label="Filtres du catalogue">
+
+          <div class="rail-head">
+            <span class="t">Affiner</span>
+            <div style="display:flex;align-items:center;gap:12px">
+              <a href="#" class="reset">Tout effacer</a>
+              <button type="button" class="mobile-close" aria-label="Fermer les filtres" onclick="closeFilters()">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <details class="filter-sec" open>
+            <summary>
+              <span>Pays</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="italie"><span>Italie</span></span><span class="count">14</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="espagne"><span>Espagne</span></span><span class="count">9</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="argentine"><span>Argentine</span></span><span class="count">4</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="usa"><span>États-Unis</span></span><span class="count">4</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="afsud"><span>Afrique du Sud</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="nz"><span>Nouvelle-Zélande</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="portugal"><span>Portugal</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="liban"><span>Liban</span></span><span class="count">2</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="france"><span>France</span></span><span class="count">2</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="pays" value="chili"><span>Chili</span></span><span class="count">2</span></label>
+            </div>
+          </details>
+
+          <details class="filter-sec" open>
+            <summary>
+              <span>Régions</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="piemont"><span>Piémont</span></span><span class="count">6</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="toscane"><span>Toscane</span></span><span class="count">4</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="catalogne"><span>Catalogne</span></span><span class="count">4</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="mendoza"><span>Mendoza</span></span><span class="count">4</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="napa"><span>Napa Valley</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="bekaa"><span>Bekaa</span></span><span class="count">2</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="otago"><span>Central Otago</span></span><span class="count">2</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="swartland"><span>Swartland</span></span><span class="count">2</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="douro"><span>Douro</span></span><span class="count">2</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="region" value="rioja"><span>Rioja</span></span><span class="count">2</span></label>
+            </div>
+          </details>
+
+          <details class="filter-sec" open>
+            <summary>
+              <span>Couleur</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <div class="color-opts">
+                <button type="button" class="color-chip is-on"><span class="dot rouge"></span>Rouge</button>
+                <button type="button" class="color-chip"><span class="dot blanc"></span>Blanc</button>
+                <button type="button" class="color-chip"><span class="dot rose"></span>Rosé</button>
+                <button type="button" class="color-chip"><span class="dot effer"></span>Effervescent</button>
+              </div>
+            </div>
+          </details>
+
+          <details class="filter-sec">
+            <summary>
+              <span>Cépage</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="nebbiolo"><span>Nebbiolo</span></span><span class="count">5</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="grenache"><span>Grenache</span></span><span class="count">5</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="pinot"><span>Pinot Noir</span></span><span class="count">5</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="malbec"><span>Malbec</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="sangiovese"><span>Sangiovese</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="syrah"><span>Syrah</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="tempranillo"><span>Tempranillo</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="cepage" value="mencia"><span>Mencia</span></span><span class="count">2</span></label>
+            </div>
+          </details>
+
+          <details class="filter-sec" open>
+            <summary>
+              <span>Prix</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <div class="price-slider" aria-hidden="true">
+                <div class="track"></div>
+                <div class="fill"></div>
+                <div class="handle h1"></div>
+                <div class="handle h2"></div>
+              </div>
+              <div class="price-range-labels">
+                <span>15 €</span>
+                <span>280 €</span>
+              </div>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="prix" value="0-15"><span>Moins de 15 €</span></span><span class="count">9</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="prix" value="15-30"><span>15 · 30 €</span></span><span class="count">16</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="prix" value="30-50"><span>30 · 50 €</span></span><span class="count">11</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="prix" value="50-100"><span>50 · 100 €</span></span><span class="count">7</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="prix" value="100plus"><span>Plus de 100 €</span></span><span class="count">5</span></label>
+            </div>
+          </details>
+
+          <details class="filter-sec">
+            <summary>
+              <span>Millésime</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2024"><span>2024</span></span><span class="count">3</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2023"><span>2023</span></span><span class="count">7</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2022"><span>2022</span></span><span class="count">10</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2021"><span>2021</span></span><span class="count">6</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2020"><span>2020</span></span><span class="count">9</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2019"><span>2019</span></span><span class="count">4</span></label>
+              <label class="filter-opt"><span class="left"><input type="checkbox" name="mill" value="2018"><span>2018</span></span><span class="count">5</span></label>
+            </div>
+          </details>
+
+          <details class="filter-sec" open>
+            <summary>
+              <span>Labels</span>
+              <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 4 4 4-4"/></svg>
+            </summary>
+            <div class="opts">
+              <div class="pill-filters">
+                <button type="button" class="pill-filter">Bio</button>
+                <button type="button" class="pill-filter is-on">Iconique</button>
+                <button type="button" class="pill-filter">Nouveau</button>
+                <button type="button" class="pill-filter">Rare</button>
+                <button type="button" class="pill-filter">Magnum</button>
+              </div>
+            </div>
+          </details>
+
+        </aside>
+
+        <!-- ============================================================
+             PRODUCT CONTENT · woocommerce
+             ============================================================ -->
+        <div class="shop-content">
+
+          <div class="toolbar woocommerce-notices-wrapper" data-reveal>
+            <button type="button" class="filter-open-mobile" onclick="openFilters()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+              Filtrer
+            </button>
+            <p class="count-txt woocommerce-result-count"><strong>380</strong>références trouvées</p>
+            <div class="tb-right">
+              <div class="sort-wrap">
+                <label for="sort">Trier par</label>
+                <select id="sort" class="sort orderby" name="orderby">
+                  <option value="pertinence">Pertinence</option>
+                  <option value="price">Prix croissant</option>
+                  <option value="price-desc">Prix décroissant</option>
+                  <option value="vintage">Millésime</option>
+                  <option value="date">Nouveautés</option>
+                </select>
+              </div>
+              <div class="view-toggle" role="group" aria-label="Vue">
+                <button type="button" class="is-on" aria-label="Grille" onclick="setView('grid', this)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </button>
+                <button type="button" aria-label="Liste" onclick="setView('list', this)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="products-grid products columns-3 woocommerce-loop" id="productsGrid">
+
+            <!-- Product 1 · Gaja Sperss Barolo -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="gaja-sperss-2019">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                  <span class="pill pill--promo">-11%</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Gaja Sperss Barolo 2019" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">IT</span>
+                  <span class="region">Piémont · Barolo DOCG</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Gaja Sperss Barolo 2019</h3>
+                <span class="pmeta">Nebbiolo · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price-old">385 €</span>
+                    <span class="price woocommerce-Price-amount amount">341<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 2 · Palacios L'Ermita -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="palacios-ermita-2022">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Álvaro Palacios L'Ermita 2022" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">ES</span>
+                  <span class="region">Priorat DOC · Catalogne</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Álvaro Palacios L'Ermita 2022</h3>
+                <span class="pmeta">Grenache · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">846<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 3 · Riccitelli Apple Malbec (Argentine) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="riccitelli-apple-malbec-2021">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--new">Nouveau</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Riccitelli The Apple Malbec 2021" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">AR</span>
+                  <span class="region">Mendoza · Argentine</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Riccitelli 'The Apple' Malbec 2021</h3>
+                <span class="pmeta">Malbec · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">15<span class="cents">,50 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 4 · Tourelles Syrah (Liban) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="tourelles-syrah-2022">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--rare">Signature Liban</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Domaine des Tourelles Syrah 2022" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">LB</span>
+                  <span class="region">Bekaa · Liban</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Domaine des Tourelles Syrah 2022</h3>
+                <span class="pmeta">Syrah assemblée · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">8<span class="cents">,15 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 5 · Brunelli Brunello (Toscane) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="gianni-brunello-2020">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Gianni Brunelli Brunello di Montalcino 2020" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">IT</span>
+                  <span class="region">Toscane · Brunello DOCG</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Gianni Brunelli Brunello 2020</h3>
+                <span class="pmeta">Sangiovese · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">57<span class="cents">,50 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 6 · Shafer Hillside (USA) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="shafer-hillside-2021">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Shafer Hillside Select 2021" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">US</span>
+                  <span class="region">Napa · Stags Leap</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Shafer Hillside Select 2021</h3>
+                <span class="pmeta">Cabernet Sauvignon · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">326<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- ============================================================
+                 EDITORIAL PUSH (mid-grid, row 3)
+                 ============================================================ -->
+            <a href="en-preparation.html" class="ed-push" data-reveal>
+              <div class="ed-push-main">
+                <span class="ey">Par Élise Darsault · Chef sommelière</span>
+                <h3>La sélection <em>sommelier</em> de la semaine.</h3>
+                <p>Six bouteilles ouvertes hier soir, six convictions. Des Nebbiolo qui chantent, des Pinot Noir qui dansent et un Libanais qui vous cueille. Le genre de sélection qu'on aimerait partager à l'aveugle.</p>
+                <span class="ed-cta">
+                  Lire dans le Journal
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+              <div class="ed-side">
+                <p class="qt">« Un vin n'est pas un produit. C'est un instant, une lumière, une conversation qu'on ouvre. On choisit <em>ce qu'on aime boire</em>, et on espère que vous aimerez aussi. »</p>
+                <span class="by">Édition N° 24 · Automne-Hiver 2026</span>
+              </div>
+            </a>
+
+            <!-- Product 7 · Felton Road Block 3 (NZ) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="felton-block3-2023">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Felton Road Block 3 Pinot Noir 2023" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">NZ</span>
+                  <span class="region">Central Otago · Nouvelle-Zélande</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Felton Road Block 3 Pinot Noir 2023</h3>
+                <span class="pmeta">Pinot Noir · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">56<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 8 · Sadie Columella (Afrique du Sud) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="sadie-columella-2023">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--bio">Bio</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Sadie Family Columella 2023" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">ZA</span>
+                  <span class="region">Swartland · Afrique du Sud</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Sadie Family Columella 2023</h3>
+                <span class="pmeta">Syrah assemblage · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">80<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 9 · Niepoort Redoma (Portugal) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="niepoort-redoma-2022">
+              <div class="media">
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Niepoort Redoma Tinto 2022" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">PT</span>
+                  <span class="region">Douro DOC · Portugal</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Niepoort Redoma Tinto 2022</h3>
+                <span class="pmeta">Touriga Nacional · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">23<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 10 · Neyen Apalta (Chili) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="neyen-apalta-2017">
+              <div class="media">
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Neyen Espíritu de Apalta 2017" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">CL</span>
+                  <span class="region">Colchagua · Chili</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Neyen Espíritu de Apalta 2017</h3>
+                <span class="pmeta">Carménère assemblé · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">39<span class="cents">,70 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 11 · Moric Blaufränkisch (Autriche) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="moric-blaufrankisch-2023">
+              <div class="media">
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-white.svg" alt="Moric Blaufränkisch 2023" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">AT</span>
+                  <span class="region">Burgenland · Autriche</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Moric Blaufränkisch 2023</h3>
+                <span class="pmeta">Blaufränkisch · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">15<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 12 · Balnaves Tally (Australie) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="balnaves-tally-2018">
+              <div class="media">
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Balnaves The Tally Reserve 2018" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">AU</span>
+                  <span class="region">Coonawarra · Australie</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Balnaves The Tally Reserve 2018</h3>
+                <span class="pmeta">Cabernet Sauvignon · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">49<span class="cents">,50 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 13 · Rioja Alta 890 (Espagne) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="rioja-890-2011">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="La Rioja Alta Gran Reserva 890 · 2011" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">ES</span>
+                  <span class="region">Rioja DOC · Espagne</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">La Rioja Alta Gran Reserva 890 · 2011</h3>
+                <span class="pmeta">Tempranillo · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">152<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 14 · Cayuse God Only Knows (USA) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="cayuse-god-2020">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--iconic">Iconique</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Cayuse God Only Knows Grenache 2020" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">US</span>
+                  <span class="region">Walla Walla · Washington</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Cayuse God Only Knows Grenache 2020</h3>
+                <span class="pmeta">Grenache · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">105<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 15 · Sottimano Pajoré (Italie) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="sottimano-pajore-2020">
+              <div class="media">
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-burgundy.svg" alt="Sottimano Pajoré Barbaresco 2020" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">IT</span>
+                  <span class="region">Piémont · Barbaresco DOCG</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Sottimano Pajoré Barbaresco 2020</h3>
+                <span class="pmeta">Nebbiolo · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">51<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 16 · Acustic Brao (Espagne, bio) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="acustic-brao-2019">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--bio">Bio</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Acustic Brao Grenache Carignan 2019" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">ES</span>
+                  <span class="region">Montsant DO · Catalogne</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Acustic Brao Grenache Carignan 2019</h3>
+                <span class="pmeta">Grenache, Carignan · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">19<span class="cents">,30 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 17 · Benanti Etna (Italie, nouveau) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="benanti-etna-2023">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--new">Nouveau</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Benanti Etna Rosso 2023" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">IT</span>
+                  <span class="region">Sicile · Etna DOC</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Benanti Etna Rosso 2023</h3>
+                <span class="pmeta">Nerello Mascalese · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">14<span class="cents">,75 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+            <!-- Product 18 · Sadie Pofadder (Afrique du Sud) -->
+            <a href="produit.html" class="pcard product type-product status-publish" data-product-id="sadie-pofadder-2024">
+              <div class="media">
+                <div class="pill-group">
+                  <span class="pill pill--bio">Bio</span>
+                  <span class="pill pill--new">Nouveau</span>
+                </div>
+                <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <img src="assets/bottle-bordeaux.svg" alt="Sadie Family Pofadder Cinsault 2024" loading="lazy">
+              </div>
+              <div class="body">
+                <div class="eyebrow-row">
+                  <span class="flag">ZA</span>
+                  <span class="region">Swartland · Afrique du Sud</span>
+                </div>
+                <h3 class="woocommerce-loop-product__title woocommerce-LoopProduct-link">Sadie Family Pofadder Cinsault 2024</h3>
+                <span class="pmeta">Cinsault vieilles vignes · 75cl</span>
+                <div class="foot">
+                  <div>
+                    <span class="price woocommerce-Price-amount amount">40<span class="cents">,00 €</span></span>
+                  </div>
+                  <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                    Ajouter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- ============================================================
+               PAGINATION · woocommerce-pagination
+               ============================================================ -->
+          <nav class="pagination woocommerce-pagination" role="navigation" aria-label="Pagination du catalogue" data-reveal>
+            <span class="is-current" aria-current="page">1</span>
+            <a href="?page=2">2</a>
+            <a href="?page=3">3</a>
+            <a href="?page=4">4</a>
+            <span class="gap">···</span>
+            <a href="?page=24">24</a>
+            <a href="?page=2" class="next" aria-label="Page suivante">
+              Suivant
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </nav>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="filter-backdrop" id="filterBackdrop" onclick="closeFilters()"></div>
+  </section>
+
+</main>
+
+<!-- ================================================================
+     TEMPLATE: footer.php
+     ================================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="inner">
+
+      <div class="brand-col">
+        <div class="wordmark">Beryte<em> Wine</em></div>
+        <div class="tagline">Le vin dans toute sa splendeur</div>
+        <p class="addr">
+          22 rue Saint-Exupéry<br>
+          33290 Blanquefort · France<br><br>
+          <a href="mailto:beryte.wine.shop@outlook.com" style="color:var(--c-gold)" class="link-under">beryte.wine.shop@outlook.com</a><br>
+          <a href="tel:+33000000000" style="color:rgba(246,241,231,.85)" class="link-under">+33 5 00 00 00 00</a>
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="widget-area" id="footer-widget-1">
+        <h5>La cave</h5>
+        <ul>
+          <li><a href="nos-vins.html">Tous les vins</a></li>
+          <li><a href="nos-vins.html?cat=champagnes">Champagnes</a></li>
+          <li><a href="nos-vins.html?cat=spiritueux">Spiritueux</a></li>
+          <li><a href="nos-vins.html?cat=bieres">Bières craft</a></li>
+          <li><a href="nos-vins.html?focus=coffrets">Coffrets</a></li>
+          <li><a href="nos-vins.html?focus=pepites">Pépites</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-2">
+        <h5>Terroirs</h5>
+        <ul>
+          <li><a href="nos-vins.html?pays=italie">Italie</a></li>
+          <li><a href="nos-vins.html?pays=espagne">Espagne</a></li>
+          <li><a href="nos-vins.html?pays=argentine">Argentine</a></li>
+          <li><a href="nos-vins.html?pays=france">France</a></li>
+          <li><a href="liban.html">Liban</a></li>
+          <li><a href="nos-vins.html?pays=portugal">Portugal</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-3">
+        <h5>Maison</h5>
+        <ul>
+          <li><a href="en-preparation.html">Notre histoire</a></li>
+          <li><a href="liban.html">L'ADN Liban</a></li>
+          <li><a href="en-preparation.html">Le Journal</a></li>
+          <li><a href="en-preparation.html">Club Beryte</a></li>
+          <li><a href="pro.html">Espace pro</a></li>
+          <li><a href="en-preparation.html">Boutique physique</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-4">
+        <h5>Aide</h5>
+        <ul>
+          <li><a href="en-preparation.html">Nous contacter</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Paiement & sécurité</a></li>
+          <li><a href="#">Conservation</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="en-preparation.html">Mon compte</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div>© 2026 Beryte Wine · SIRET 123 456 789 00012 · Licence IV</div>
+      <div class="pay">
+        <span>VISA</span>
+        <span>MASTERCARD</span>
+        <span>APPLE PAY</span>
+        <span>ALMA 3×</span>
+        <span>PAYPAL</span>
+      </div>
+      <div>
+        <a href="#">Mentions légales</a> ·
+        <a href="#">CGV</a> ·
+        <a href="#">Confidentialité</a> ·
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/evin-banner.php (Loi Evin sticky)
+     ================================================================ -->
+<div class="evin" role="note">
+  <em>L'abus d'alcool est dangereux pour la santé</em> · à consommer avec modération
+</div>
+
+<script>
+/* ===============================================================
+   Beryte Nos Vins · minimal JS
+   =============================================================== */
+
+/* Age gate cookie check */
+(function(){
+  try {
+    if (localStorage.getItem('beryte_age_ok') === '1' || document.cookie.indexOf('beryte_age_ok=1') !== -1) {
+      var g = document.getElementById('ageGate');
+      if (g) g.style.display = 'none';
+    }
+  } catch(e){}
+})();
+
+/* Sticky header shadow on scroll */
+(function(){
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function onScroll(){
+    if (window.scrollY > 8) h.classList.add('is-scrolled');
+    else h.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
+      if (e.isIntersecting) {
+        setTimeout(function(){ e.target.classList.add('is-visible'); }, i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+
+/* Cart count bump */
+function bumpCart(){
+  var c = document.getElementById('cartCount');
+  if (!c) return;
+  var n = parseInt(c.textContent || '0', 10);
+  c.textContent = (n + 1);
+  c.classList.add('bump');
+  setTimeout(function(){ c.classList.remove('bump'); }, 420);
+}
+
+/* View toggle (grid/list) */
+function setView(mode, btn){
+  var grid = document.getElementById('productsGrid');
+  if (!grid) return;
+  if (mode === 'list') grid.classList.add('is-list');
+  else grid.classList.remove('is-list');
+  var buttons = btn.parentNode.querySelectorAll('button');
+  buttons.forEach(function(b){ b.classList.remove('is-on'); });
+  btn.classList.add('is-on');
+}
+
+/* Color chip toggle */
+document.querySelectorAll('.color-chip').forEach(function(c){
+  c.addEventListener('click', function(){ this.classList.toggle('is-on'); });
+});
+
+/* Pill label toggle */
+document.querySelectorAll('.pill-filter').forEach(function(p){
+  p.addEventListener('click', function(){ this.classList.toggle('is-on'); });
+});
+
+/* Mobile filter drawer */
+function openFilters(){
+  document.getElementById('filterRail').classList.add('is-open');
+  document.getElementById('filterBackdrop').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFilters(){
+  document.getElementById('filterRail').classList.remove('is-open');
+  document.getElementById('filterBackdrop').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>

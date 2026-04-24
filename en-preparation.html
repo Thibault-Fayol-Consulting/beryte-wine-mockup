@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A1410">
+<meta name="description" content="Cette page est en cours de préparation. Revenez dans quelques jours pour découvrir la suite de la cave Beryte Wine.">
+<title>En préparation · Beryte Wine</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+.holder {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 120px;
+  background: var(--c-cream);
+  position: relative;
+}
+.holder-card {
+  max-width: 640px;
+  text-align: center;
+  padding: 56px 32px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-top: 3px solid var(--c-purple);
+  box-shadow: var(--shadow-lg);
+}
+.holder-card .logo-wrap img { height: 72px; margin: 0 auto 28px; }
+.holder-card h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(32px, 4.2vw, 52px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variation-settings: 'opsz' 96;
+  margin-bottom: 20px;
+}
+.holder-card h1 em { color: var(--c-purple); font-style: italic; font-weight: 350; }
+.holder-card .lead { max-width: 44ch; margin: 0 auto 36px; }
+.holder-card .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.holder-card .fine { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--c-border); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-ink-3); font-feature-settings: 'smcp'; }
+</style>
+</head>
+<body>
+
+<!-- TEMPLATE: header.php -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <ul class="menu primary-menu" style="display:flex; gap:28px; list-style:none; margin:0; padding:0;">
+        <li class="menu-item"><a href="nos-vins.html">Nos vins</a></li>
+        <li class="menu-item"><a href="nos-vins.html#champagnes">Champagnes</a></li>
+        <li class="menu-item"><a href="nos-vins.html#spiritueux">Spiritueux</a></li>
+        <li class="menu-item"><a href="liban.html">Liban</a></li>
+        <li class="menu-item"><a href="en-preparation.html">Journal</a></li>
+        <li class="menu-item"><a href="pro.html">Espace pro</a></li>
+      </ul>
+    </nav>
+    <a href="index.html" class="logo" aria-label="Beryte Wine">
+      <span class="beryte">Beryte</span><span class="wine">Wine</span>
+    </a>
+    <div class="util-nav">
+      <button type="button" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="hidden-mobile">Rechercher</span>
+      </button>
+      <a href="en-preparation.html" aria-label="Connexion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="hidden-mobile">Compte</span>
+      </a>
+      <button type="button" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="hidden-mobile">Panier</span>
+        <span class="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="holder">
+    <div class="holder-card">
+      <div class="logo-wrap"><img src="assets/logo.png" alt="Beryte Wine"></div>
+      <span class="eyebrow" style="display:inline-flex; margin-bottom:20px">En préparation</span>
+      <h1>Cette page se<br><em>prépare</em> encore.</h1>
+      <p class="lead">Pour la démo client, seuls la home, le catalogue, la fiche produit, la page Liban et l'espace pro sont finalisés. Le reste de la cave arrive dans les prochains jours. Merci de votre patience.</p>
+      <div class="actions">
+        <a href="index.html" class="btn">Retour à l'accueil
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="nos-vins.html" class="btn btn--line">Parcourir la cave</a>
+      </div>
+      <p class="fine">Beryte Wine · Blanquefort · 33</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="inner" style="grid-template-columns:1fr;text-align:center">
+      <div class="brand-col">
+        <div class="wordmark">Beryte<em> Wine</em></div>
+        <div class="tagline">Le vin dans toute sa splendeur</div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© 2026 Beryte Wine · SIRET 123 456 789 00012 · Licence IV</div>
+      <div><a href="#">Mentions légales</a> · <a href="#">CGV</a> · <a href="#">Confidentialité</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="evin" role="note">
+  <em>L'abus d'alcool est dangereux pour la santé</em> · à consommer avec modération
+</div>
+
+</body>
+</html>

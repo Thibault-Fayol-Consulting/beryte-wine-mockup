@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 320" fill="none">
+  <defs>
+    <linearGradient id="bgy-glass" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#3A4A28"></stop>
+      <stop offset="40%" stop-color="#1E2A14"></stop>
+      <stop offset="100%" stop-color="#0E1508"></stop>
+    </linearGradient>
+    <linearGradient id="bgy-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"></stop>
+      <stop offset="50%" stop-color="#fff" stop-opacity=".22"></stop>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+    </linearGradient>
+    <linearGradient id="bgy-cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5A2020"></stop>
+      <stop offset="50%" stop-color="#8B3030"></stop>
+      <stop offset="100%" stop-color="#3A1010"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="40" y="18" width="20" height="32" fill="url(#bgy-cap)" rx="1"></rect>
+  
+  <path d="M42 50 L42 95 Q42 100 38 108 L20 145 Q14 158 14 175 L14 292 Q14 305 28 305 L72 305 Q86 305 86 292 L86 175 Q86 158 80 145 L62 108 Q58 100 58 95 L58 50 Z" fill="url(#bgy-glass)"></path>
+  <path d="M24 150 L24 292 Q24 300 30 300 L34 300 L34 150 Z" fill="url(#bgy-shine)"></path>
+  
+  <ellipse cx="50" cy="215" rx="28" ry="38" fill="#EDE4D0"></ellipse>
+  <ellipse cx="50" cy="215" rx="25" ry="35" fill="none" stroke="#8B6030" stroke-width=".5"></ellipse>
+  <text x="50" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#4A2818" font-style="italic">Domaine</text>
+  <line x1="38" y1="212" x2="62" y2="212" stroke="#8B6030" stroke-width=".4"></line>
+  <text x="50" y="228" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#6B4028" letter-spacing=".5">PINOT NOIR</text>
+  <text x="50" y="238" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#8B6030" font-style="italic">2020</text>
+</svg>

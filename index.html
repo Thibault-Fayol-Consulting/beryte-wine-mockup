@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A1410">
+<meta name="description" content="Beryte Wine · Caviste indépendant à Blanquefort. Vins, champagnes, spiritueux et bières sélectionnés de l'Italie à l'Argentine, du Priorat à la Bekaa libanaise.">
+<title>Beryte Wine · Caviste indépendant · Vins d'exception, de Bordeaux à la Bekaa</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+/* =====================================================
+   HOME · styles spécifiques
+   ===================================================== */
+
+/* ========== HERO ========== */
+.hero { padding: clamp(48px, 6vw, 96px) 0 clamp(56px, 7vw, 104px); position: relative; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: end;
+}
+.hero-copy .eyebrow { margin-bottom: 28px; }
+.hero-copy h1 { margin-bottom: 32px; }
+.hero-copy .lead { margin-bottom: 36px; max-width: 44ch; }
+.hero-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.hero-stats {
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: 32px;
+  border-top: 1px solid var(--c-border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.hero-stat { display: flex; flex-direction: column; gap: 4px; }
+.hero-stat .n { font-family: var(--ff-display); font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; color: var(--c-ink); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: oldstyle-nums; font-variation-settings: 'opsz' 72; }
+.hero-stat .n em { font-style: italic; color: var(--c-purple); }
+.hero-stat .l { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-ink-2); font-weight: 600; font-feature-settings: 'smcp'; margin-top: 8px; }
+
+.hero-visual {
+  position: relative;
+  min-height: clamp(480px, 54vw, 680px);
+  background: radial-gradient(ellipse at 30% 20%, var(--c-purple) 0%, var(--c-purple-deep) 50%, #1A0814 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(28px, 3vw, 44px);
+  color: var(--c-cream);
+}
+.hero-visual::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .5;
+  pointer-events: none;
+}
+.hero-visual::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 85%, rgba(200,169,107,.28), transparent 60%);
+}
+.hero-visual > * { position: relative; z-index: 2; }
+.hero-visual .top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.hero-visual .eyebrow { color: var(--c-gold); }
+.hero-visual .eyebrow::before { background: var(--c-gold); }
+.hero-visual .issue-n {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  font-feature-settings: 'smcp';
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 8px 0;
+  border-top: 1px solid var(--c-gold);
+  border-bottom: 1px solid var(--c-gold);
+}
+.hero-visual .bottle-frame {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.hero-visual .bottle-frame img {
+  height: clamp(320px, 42vw, 520px);
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.6));
+  transform: rotate(4deg);
+}
+.hero-visual .feat-title {
+  max-width: 11ch;
+}
+.hero-visual .feat-title h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--c-cream);
+  font-variation-settings: 'opsz' 96;
+}
+.hero-visual .feat-title h3 em { color: var(--c-gold); }
+.hero-visual .feat-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+.hero-visual .price-block .ptag {
+  font-family: var(--ff-display);
+  font-size: 38px;
+  font-weight: 350;
+  color: var(--c-cream);
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1;
+  font-variation-settings: 'opsz' 72;
+}
+.hero-visual .price-block .ptag .cents { font-size: 20px; color: var(--c-gold); }
+.hero-visual .price-block .prod {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(246,241,231,.7);
+  margin-top: 8px;
+  font-feature-settings: 'smcp';
+}
+.hero-visual .medaille {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  background: var(--c-cream);
+  color: var(--c-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  border: 1.5px solid var(--c-gold);
+}
+.hero-visual .medaille .y { font-family: var(--ff-display); font-style: italic; font-size: 20px; color: var(--c-purple); line-height: 1; font-variant-numeric: oldstyle-nums; }
+.hero-visual .medaille .t { font-size: 7.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-ink-2); margin-top: 3px; font-feature-settings: 'smcp'; font-weight: 600; }
+
+/* ========== LOGOS BAND (producteurs prestige) ========== */
+.logos-band {
+  padding: 48px 0;
+  border-block: 1px solid var(--c-border);
+  background: var(--c-cream);
+}
+.logos-band .inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+.logos-band .label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-ink-3); font-weight: 600; font-feature-settings: 'smcp'; flex-shrink: 0; }
+.logos-band .names { display: flex; flex: 1; justify-content: space-around; gap: 36px; flex-wrap: wrap; }
+.logos-band .names span {
+  font-family: var(--ff-display);
+  font-size: clamp(15px, 1.5vw, 21px);
+  font-weight: 350;
+  color: var(--c-ink-2);
+  letter-spacing: -0.01em;
+  font-style: italic;
+  font-variation-settings: 'opsz' 48;
+  opacity: .82;
+  transition: opacity var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.logos-band .names span:hover { opacity: 1; color: var(--c-purple); }
+
+/* ========== UNIVERS (4 catégories) ========== */
+.univers-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 14px;
+}
+.univers-card {
+  position: relative;
+  min-height: clamp(420px, 42vw, 560px);
+  color: var(--c-cream);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform var(--t-med) var(--ease);
+}
+.univers-card:hover { transform: translateY(-6px); }
+.univers-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .5;
+  pointer-events: none;
+}
+.univers-card > * { position: relative; z-index: 2; }
+.univers-card.vins { background: radial-gradient(ellipse at 30% 70%, var(--c-purple) 0%, #2A0F20 65%, #150811 100%); }
+.univers-card.champ { background: radial-gradient(ellipse at 70% 30%, #8B6E3A 0%, #3E2E17 70%); }
+.univers-card.spir  { background: radial-gradient(ellipse at 50% 30%, #3F2818 0%, #1A0F08 75%); }
+.univers-card.biere { background: radial-gradient(ellipse at 40% 40%, var(--c-olive) 0%, #1F2614 75%); }
+.univers-card .numero {
+  font-family: var(--ff-display);
+  font-size: 14px;
+  font-weight: 350;
+  letter-spacing: 0.2em;
+  color: var(--c-gold);
+  font-feature-settings: 'smcp';
+  font-variant-numeric: oldstyle-nums;
+}
+.univers-card h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 300;
+  line-height: .98;
+  letter-spacing: -0.03em;
+  color: var(--c-cream);
+  font-variation-settings: 'opsz' 96;
+  max-width: 10ch;
+}
+.univers-card h3 em { color: var(--c-gold); font-weight: 350; }
+.univers-card .meta-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 24px; }
+.univers-card .count { font-family: var(--ff-mono); font-size: 11px; color: rgba(246,241,231,.72); letter-spacing: 0.1em; }
+.univers-card .arrow {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(246,241,231,.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-cream);
+  transition: all var(--t-fast) var(--ease);
+}
+.univers-card:hover .arrow { background: var(--c-gold); color: var(--c-ink); border-color: var(--c-gold); }
+.univers-card .arrow svg { width: 16px; height: 16px; }
+
+/* ========== RAIL PRODUITS ========== */
+.rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+/* ========== LIBAN (section signature) ========== */
+.liban-wrap {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.liban-wrap .text h2 { margin-bottom: 28px; }
+.liban-wrap .text .lead { margin-bottom: 36px; max-width: 44ch; color: rgba(246,241,231,.8); }
+.liban-figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 28px 0; border-block: 1px solid rgba(200,169,107,.3); margin-bottom: 36px; }
+.liban-fig .n { font-family: var(--ff-display); font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: var(--c-gold); line-height: 1; font-variant-numeric: oldstyle-nums; font-variation-settings: 'opsz' 72; }
+.liban-fig .n em { color: var(--c-cream); font-style: italic; }
+.liban-fig .l { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,241,231,.55); font-weight: 600; font-feature-settings: 'smcp'; margin-top: 8px; }
+.liban-visual {
+  aspect-ratio: 4/5;
+  background: radial-gradient(ellipse at 40% 50%, #3E1B2E 0%, var(--c-purple-deep) 60%, #130611 100%);
+  position: relative;
+  overflow: hidden;
+}
+.liban-visual::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .7 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .45;
+}
+.liban-visual .quote-card {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  background: rgba(246,241,231,.97);
+  padding: 32px;
+  color: var(--c-ink);
+  border-top: 2px solid var(--c-gold);
+  box-shadow: var(--shadow-lg);
+}
+.liban-visual .quote-card p { font-family: var(--ff-display); font-style: italic; font-size: clamp(16px, 1.5vw, 21px); line-height: 1.42; color: var(--c-ink); margin: 0 0 20px; font-weight: 350; letter-spacing: -0.01em; }
+.liban-visual .quote-card p em { color: var(--c-purple); }
+.liban-visual .quote-card .sig { display: flex; align-items: center; gap: 14px; padding-top: 16px; border-top: 1px solid var(--c-border); }
+.liban-visual .quote-card .sig .av { width: 42px; height: 42px; border-radius: 50%; background: var(--c-purple); color: var(--c-cream); display: flex; align-items: center; justify-content: center; font-family: var(--ff-display); font-size: 17px; font-style: italic; font-weight: 500; font-variation-settings: 'opsz' 48; }
+.liban-visual .quote-card .sig .who { display: flex; flex-direction: column; }
+.liban-visual .quote-card .sig .n { font-weight: 600; font-size: 13px; }
+.liban-visual .quote-card .sig .r { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-ink-3); font-feature-settings: 'smcp'; }
+
+/* ========== EDITORIAL FEATURE ========== */
+.ed-feat { display: grid; grid-template-columns: 5fr 7fr; gap: 24px; min-height: 540px; }
+.ed-feat .left {
+  background: var(--c-cream);
+  border: 1px solid var(--c-border);
+  border-left: 2px solid var(--c-purple);
+  padding: clamp(32px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.ed-feat .left .issue-bg {
+  font-family: var(--ff-display);
+  font-size: clamp(120px, 16vw, 220px);
+  font-weight: 300;
+  line-height: .78;
+  letter-spacing: -0.08em;
+  color: var(--c-purple);
+  font-variant-numeric: oldstyle-nums;
+  opacity: .13;
+  margin-bottom: -40px;
+  font-variation-settings: 'opsz' 144;
+}
+.ed-feat .left h2 { font-size: clamp(32px, 3.4vw, 46px); font-weight: 350; letter-spacing: -0.025em; line-height: 1.02; font-variation-settings: 'opsz' 96; }
+.ed-feat .left h2 em { color: var(--c-purple); font-weight: 350; }
+.ed-feat .left .actions { display: flex; align-items: center; gap: 24px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--c-border); }
+.ed-feat .right {
+  background: radial-gradient(ellipse at 30% 40%, #3F1D2E 0%, var(--c-purple-deep) 55%, #140611 100%);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(36px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--c-cream);
+}
+.ed-feat .right::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .5;
+}
+.ed-feat .right > * { position: relative; z-index: 2; }
+.ed-feat .right h2 { font-family: var(--ff-display); font-size: clamp(40px, 5vw, 68px); font-weight: 300; line-height: .96; letter-spacing: -0.04em; color: var(--c-cream); max-width: 10ch; font-variation-settings: 'opsz' 144; }
+.ed-feat .right h2 em { color: var(--c-gold); font-style: italic; font-weight: 350; }
+.ed-feat .right .meta { margin-top: 20px; display: flex; gap: 20px; align-items: center; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,241,231,.72); font-feature-settings: 'smcp'; }
+.ed-feat .right .meta .divider { width: 28px; height: 1px; background: var(--c-gold); }
+
+/* ========== B2B BAND ========== */
+.b2b-band {
+  background: var(--c-dark);
+  color: var(--c-cream);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 8vw, 128px) 0;
+}
+.b2b-band::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .4;
+}
+.b2b-band::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(90,33,69,.35), transparent 55%), radial-gradient(ellipse at 10% 90%, rgba(200,169,107,.15), transparent 50%);
+  pointer-events: none;
+}
+.b2b-band > .container { position: relative; z-index: 2; }
+.b2b-grid { display: grid; grid-template-columns: 6fr 5fr; gap: clamp(32px, 5vw, 88px); align-items: center; }
+.b2b-grid .eyebrow { color: var(--c-gold); }
+.b2b-grid .eyebrow::before { background: var(--c-gold); }
+.b2b-grid h2 { font-size: clamp(38px, 5vw, 72px); font-weight: 300; line-height: .98; letter-spacing: -0.035em; margin: 16px 0 20px; max-width: 14ch; color: var(--c-cream); font-variation-settings: 'opsz' 144; }
+.b2b-grid h2 em { color: var(--c-gold); font-style: italic; font-weight: 350; }
+.b2b-grid .lead { color: rgba(246,241,231,.72); max-width: 52ch; margin-bottom: 32px; }
+.b2b-advantages { list-style: none; padding: 0; margin: 0 0 40px; display: grid; gap: 14px; }
+.b2b-advantages li { display: flex; gap: 14px; align-items: flex-start; font-size: 14.5px; color: rgba(246,241,231,.9); padding-bottom: 14px; border-bottom: 1px solid rgba(246,241,231,.08); }
+.b2b-advantages li:last-child { border-bottom: 0; padding-bottom: 0; }
+.b2b-advantages li svg { width: 18px; height: 18px; color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
+.b2b-advantages li strong { color: var(--c-gold); font-weight: 600; margin-right: 6px; }
+.b2b-form {
+  background: rgba(246,241,231,.04);
+  border: 1px solid rgba(200,169,107,.25);
+  padding: clamp(28px, 3vw, 44px);
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+.b2b-form::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--c-gold);
+}
+.b2b-form h3 { font-family: var(--ff-display); font-size: 26px; font-weight: 350; color: var(--c-cream); margin-bottom: 8px; letter-spacing: -0.02em; font-variation-settings: 'opsz' 72; }
+.b2b-form h3 em { color: var(--c-gold); }
+.b2b-form .sub { font-size: 12.5px; color: rgba(246,241,231,.6); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; font-feature-settings: 'smcp'; }
+.b2b-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.b2b-form .field { margin-bottom: 14px; }
+.b2b-form label { color: rgba(246,241,231,.7); }
+.b2b-form .input, .b2b-form .select {
+  background: rgba(246,241,231,.08);
+  border: 1px solid rgba(246,241,231,.18);
+  color: var(--c-cream);
+}
+.b2b-form .input::placeholder { color: rgba(246,241,231,.4); }
+.b2b-form .input:focus, .b2b-form .select:focus { border-color: var(--c-gold); background: rgba(246,241,231,.12); box-shadow: 0 0 0 3px rgba(200,169,107,.12); }
+.b2b-form .btn { margin-top: 12px; width: 100%; }
+.b2b-form .fine { font-size: 11px; color: rgba(246,241,231,.45); margin-top: 14px; line-height: 1.55; letter-spacing: 0.04em; }
+
+/* ========== JOURNAL RAIL ========== */
+.journal-rail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* ========== CLUB TEASER ========== */
+.club-teaser {
+  background: linear-gradient(135deg, #2A1220 0%, var(--c-purple-deep) 55%, var(--c-purple) 100%);
+  color: var(--c-cream);
+  padding: clamp(48px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.club-teaser::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .4;
+  pointer-events: none;
+}
+.club-teaser > * { position: relative; z-index: 2; }
+.club-teaser .eyebrow { color: var(--c-gold); }
+.club-teaser .eyebrow::before { background: var(--c-gold); }
+.club-teaser h2 { font-family: var(--ff-display); font-size: clamp(36px, 4.5vw, 58px); font-weight: 300; line-height: 1; letter-spacing: -0.03em; color: var(--c-cream); margin: 16px 0 20px; font-variation-settings: 'opsz' 96; }
+.club-teaser h2 em { color: var(--c-gold); font-style: italic; font-weight: 350; }
+.club-teaser p { font-size: 15.5px; color: rgba(246,241,231,.78); line-height: 1.65; margin: 0 0 32px; max-width: 44ch; }
+.club-form { display: flex; gap: 10px; }
+.club-form .input { flex: 1; background: rgba(246,241,231,.08); border-color: rgba(246,241,231,.2); color: var(--c-cream); }
+.club-form .input::placeholder { color: rgba(246,241,231,.45); }
+.club-form .input:focus { border-color: var(--c-gold); }
+.club-privileges { display: grid; gap: 14px; padding-left: clamp(0px, 4vw, 40px); border-left: 1px solid rgba(200,169,107,.3); }
+.club-privileges li { list-style: none; display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: rgba(246,241,231,.85); }
+.club-privileges li svg { width: 18px; height: 18px; color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 440px; }
+  .univers-grid { grid-template-columns: 1fr 1fr; }
+  .rail { grid-template-columns: 1fr 1fr; }
+  .liban-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .ed-feat { grid-template-columns: 1fr; min-height: auto; }
+  .b2b-grid { grid-template-columns: 1fr; gap: 48px; }
+  .journal-rail { grid-template-columns: 1fr; }
+  .club-teaser { grid-template-columns: 1fr; padding: 40px; }
+  .club-privileges { padding-left: 0; border-left: 0; padding-top: 24px; border-top: 1px solid rgba(200,169,107,.3); }
+  .b2b-form .row { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .univers-grid { grid-template-columns: 1fr; }
+  .rail { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .liban-figures { grid-template-columns: 1fr; gap: 16px; }
+  .logos-band .inner { justify-content: center; text-align: center; }
+  .logos-band .names { justify-content: center; gap: 20px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .hero-actions a.link-under { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/age-gate.php
+     Age verification (18+). WP: hook into woocommerce-age-gate plugin
+     ================================================================ -->
+<div class="age-gate" id="ageGate" role="dialog" aria-labelledby="ageGateTitle" aria-modal="true">
+  <div class="age-gate-card">
+    <div class="logo-wrap"><img src="assets/logo.png" alt="Beryte Wine"></div>
+    <h2 id="ageGateTitle">Avez-vous <em>l'âge légal</em><br>pour entrer ?</h2>
+    <p>L'accès à notre cave est réservé aux personnes majeures. En entrant, vous confirmez avoir 18 ans ou plus.</p>
+    <div class="actions">
+      <button type="button" class="btn btn--line" onclick="document.getElementById('ageGate').style.display='none'; try{localStorage.setItem('beryte_age_ok','1');}catch(e){}">Oui, j'entre</button>
+      <a href="https://www.google.com" class="btn btn--ghost" style="color:var(--c-ink); border-color:var(--c-border-2)">Non, quitter</a>
+    </div>
+    <p class="evin-note">L'abus d'alcool est dangereux pour la santé</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     TEMPLATE: header.php
+     Top ticker + sticky header + util nav
+     ================================================================ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+    <!-- Duplication pour la boucle infinie -->
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <ul class="menu primary-menu" style="display:flex; gap:28px; list-style:none; margin:0; padding:0;">
+        <li class="menu-item"><a href="nos-vins.html" class="is-active">Nos vins</a></li>
+        <li class="menu-item"><a href="nos-vins.html#champagnes">Champagnes</a></li>
+        <li class="menu-item"><a href="nos-vins.html#spiritueux">Spiritueux</a></li>
+        <li class="menu-item"><a href="liban.html">Liban</a></li>
+        <li class="menu-item"><a href="en-preparation.html">Journal</a></li>
+        <li class="menu-item"><a href="pro.html">Espace pro</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="Beryte Wine · retour à l'accueil">
+      <span class="beryte">Beryte</span>
+      <span class="wine">Wine</span>
+    </a>
+
+    <div class="util-nav">
+      <button type="button" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="hidden-mobile">Rechercher</span>
+      </button>
+      <a href="en-preparation.html" aria-label="Connexion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="hidden-mobile">Compte</span>
+      </a>
+      <button type="button" class="cart-toggle" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="hidden-mobile">Panier</span>
+        <span class="cart-count" id="cartCount">2</span>
+      </button>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" role="main">
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-hero.php
+       ================================================================ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow">N° 24 · Automne · Hiver 2026</span>
+          <h1 class="display-xxl">Le vin dans<br>toute sa <em>splendeur</em>.</h1>
+          <p class="lead">De la Bekaa libanaise aux coteaux de Mendoza, du Priorat catalan à Martinborough, nos sommelières sélectionnent les domaines qui marquent leur terroir. Un assemblage de caractères, jamais un catalogue.</p>
+          <div class="hero-actions">
+            <a href="nos-vins.html" class="btn btn--lg">Entrer dans la cave
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#selection" class="link-under label">Explorer la sélection</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat"><span class="n"><em>120</em>+</span><span class="l">Domaines en direct</span></div>
+            <div class="hero-stat"><span class="n">48<em>h</em></span><span class="l">Expédition moyenne</span></div>
+            <div class="hero-stat"><span class="n">2015</span><span class="l">Cave à Blanquefort</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-visual has-grain" aria-label="Focus bouteille du mois" data-reveal>
+          <div class="top-meta">
+            <span class="eyebrow">Focus · Pièce rare</span>
+            <span class="issue-n">N° 01</span>
+          </div>
+
+          <div class="bottle-frame">
+            <img src="assets/bottle-bordeaux.svg" alt="Château Musar 2016 · Bekaa">
+          </div>
+
+          <div class="feat-title">
+            <h3>Château <em>Musar</em><br>2016</h3>
+          </div>
+
+          <div class="feat-foot">
+            <div class="price-block">
+              <div class="ptag">64<span class="cents">,50 €</span></div>
+              <div class="prod">Bekaa · Liban · 75cl</div>
+            </div>
+            <div class="medaille">
+              <span class="y">Gold</span>
+              <span class="t">Decanter<br>2024</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-prestige-band.php
+       ================================================================ -->
+  <section class="logos-band">
+    <div class="container">
+      <div class="inner">
+        <span class="label">Producteurs en direct</span>
+        <div class="names">
+          <span>Château Musar</span>
+          <span>Álvaro Palacios</span>
+          <span>Gaja</span>
+          <span>Felton Road</span>
+          <span>Niepoort</span>
+          <span>Sadie Family</span>
+          <span>Domaine des Tourelles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-univers.php (catégories)
+       ================================================================ -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">L'univers Beryte</span>
+          <h2 class="display-xl">Trouver le bon <em>accord</em></h2>
+        </div>
+        <div class="subhead">
+          Quatre familles, une même exigence : la singularité. Nos sommelières travaillent en direct avec plus de 120 domaines pour vous ouvrir les caves qui comptent, de l'Europe historique au Nouveau Monde.
+          <br><a href="nos-vins.html" class="link-under" style="display:inline-block;margin-top:16px">Voir toute la cave</a>
+        </div>
+      </header>
+
+      <div class="univers-grid">
+        <a href="nos-vins.html" class="univers-card vins" data-reveal>
+          <div>
+            <div class="numero">N° I</div>
+            <h3 style="margin-top:14px">Les <em>Vins</em></h3>
+          </div>
+          <div class="meta-row">
+            <span class="count">380 références · 18 pays</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="nos-vins.html#champagnes" class="univers-card champ" data-reveal>
+          <div>
+            <div class="numero">N° II</div>
+            <h3 style="margin-top:14px">Champagnes</h3>
+          </div>
+          <div class="meta-row">
+            <span class="count">42 cuvées · vignerons</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="nos-vins.html#spiritueux" class="univers-card spir" data-reveal>
+          <div>
+            <div class="numero">N° III</div>
+            <h3 style="margin-top:14px">Spiritueux</h3>
+          </div>
+          <div class="meta-row">
+            <span class="count">68 distillateurs</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+        </a>
+
+        <a href="nos-vins.html#bieres" class="univers-card biere" data-reveal>
+          <div>
+            <div class="numero">N° IV</div>
+            <h3 style="margin-top:14px">Bières <em>craft</em></h3>
+          </div>
+          <div class="meta-row">
+            <span class="count">24 brasseries</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-selection.php
+       Sélection sommelier · branché sur WooCommerce via [products ids=""]
+       ================================================================ -->
+  <section class="section section--cream-2" id="selection">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">La sélection sommelier</span>
+          <h2 class="display-xl">Nos <em>coups de cœur</em><br>de la saison</h2>
+        </div>
+        <div class="subhead">
+          Huit bouteilles ouvertes la semaine dernière, huit histoires. Des icônes éternelles aux pépites qui nous ont bluffés, voici ce qui sort de nos caves en ce moment.
+          <br><a href="nos-vins.html" class="link-under" style="display:inline-block;margin-top:16px">Parcourir le catalogue complet →</a>
+        </div>
+      </header>
+
+      <div class="rail woocommerce-loop" data-reveal>
+
+        <!-- Product 1 · Gaja Sperss Barolo 2019 -->
+        <a href="produit.html" class="pcard product type-product status-publish" data-product-id="gaja-sperss-2019">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--iconic">Iconique</span>
+              <span class="pill pill--promo">-11%</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-burgundy.svg" alt="Gaja Sperss Barolo 2019" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">IT</span>
+              <span class="region">Piémont · Barolo DOCG</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Gaja Sperss Barolo 2019</h3>
+            <span class="pmeta">Nebbiolo · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price-old">385 €</span>
+                <span class="price woocommerce-Price-amount amount">341<span class="cents">,00 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product 2 · Château Musar (Liban) -->
+        <a href="produit.html" class="pcard product" data-product-id="musar-2016">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--rare">Signature Liban</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-bordeaux.svg" alt="Château Musar 2016" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">LB</span>
+              <span class="region">Bekaa · Liban</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Château Musar 2016</h3>
+            <span class="pmeta">Cinsault, Cabernet, Carignan · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">64<span class="cents">,50 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product 3 · Palacios L'Ermita -->
+        <a href="produit.html" class="pcard product" data-product-id="palacios-ermita-2022">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--iconic">Iconique</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-burgundy.svg" alt="Álvaro Palacios L'Ermita 2022" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">ES</span>
+              <span class="region">Priorat DOC · Catalogne</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Álvaro Palacios L'Ermita 2022</h3>
+            <span class="pmeta">Grenache · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">846<span class="cents">,00 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product 4 · Riccitelli Malbec -->
+        <a href="produit.html" class="pcard product" data-product-id="riccitelli-republica-2020">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill">Nouveau</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-bordeaux.svg" alt="Riccitelli República del Malbec" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">AR</span>
+              <span class="region">Mendoza · Luján de Cuyo</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Riccitelli República del Malbec 2020</h3>
+            <span class="pmeta">Malbec vieilles vignes · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">32<span class="cents">,00 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-editorial-feature.php
+       ================================================================ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <article class="ed-feat" data-reveal>
+        <div class="left">
+          <span class="eyebrow">N° 24 · Édition hiver</span>
+          <div class="issue-bg" aria-hidden="true">24</div>
+          <h2>L'Italie du Nord, <em>année étoilée</em>.</h2>
+          <p class="lead">Nos derniers voyages au Piémont et en Vénétie nous ont ramené six cuvées qui redéfinissent la puissance nebbiolo. Six domaines, six conversations, une édition entièrement consacrée à cet automne qui s'annonce historique pour la Barolo.</p>
+          <div class="actions">
+            <a href="en-preparation.html" class="btn">Lire l'édition
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="nos-vins.html" class="link-under label">Voir la sélection →</a>
+          </div>
+        </div>
+
+        <div class="right has-grain">
+          <span class="eyebrow">Voyage · Piémont</span>
+          <h2 style="margin-top:18px">Barolo <em>2020</em> le millésime<br>qui <em>change tout</em></h2>
+          <div class="meta">
+            <span>12 min de lecture</span>
+            <span class="divider"></span>
+            <span>Ivan Catena · sommelier</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-liban.php
+       Page signature · Lebanese heritage narrative
+       ================================================================ -->
+  <section class="section section--purple has-grain">
+    <div class="container">
+      <div class="liban-wrap">
+        <div class="text" data-reveal>
+          <span class="eyebrow">Signature · Bekaa</span>
+          <h2 class="display-xl" style="margin:16px 0 24px">Beryte,<br>le nom <em>phénicien</em><br>de Beyrouth.</h2>
+          <p class="lead">Six mille ans de viticulture avant les Romains. La plaine de la Bekaa, 1 000 mètres d'altitude, un soleil qui mûrit sans brûler et des nuits fraîches qui préservent l'acidité. De Château Musar à Tourelles, de Kefraya aux cuvées confidentielles d'Ixsir, nous allons chercher les vins que le Liban offre à ceux qui s'y rendent.</p>
+
+          <div class="liban-figures">
+            <div class="liban-fig"><span class="n"><em>6</em>000</span><span class="l">Ans de viticulture</span></div>
+            <div class="liban-fig"><span class="n">1<em>k</em></span><span class="l">Mètres d'altitude</span></div>
+            <div class="liban-fig"><span class="n">12</span><span class="l">Domaines libanais</span></div>
+          </div>
+
+          <a href="liban.html" class="btn btn--gold">Découvrir la Bekaa
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <figure class="liban-visual" data-reveal>
+          <div class="quote-card">
+            <p>« Le vin libanais raconte des millénaires. Le servir, c'est <em>tendre un verre à l'Histoire.</em> »</p>
+            <div class="sig">
+              <div class="av">S</div>
+              <div class="who">
+                <span class="n">Sonia Hoayek</span>
+                <span class="r">Sommelière · Chef de cave</span>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-b2b-band.php
+       CRITICAL: Converts leads from LinkedIn Ads / Microsoft Ads
+       ================================================================ -->
+  <section class="b2b-band" id="b2b">
+    <div class="container">
+      <div class="b2b-grid">
+        <div data-reveal>
+          <span class="eyebrow">Espace pro</span>
+          <h2>Votre <em>partenaire cave</em><br>du restaurant au<br>coffret d'affaires.</h2>
+          <p class="lead">Restaurateurs, hôteliers, cavistes revendeurs, comités d'entreprise : Beryte accompagne plus de 140 établissements en France avec un double engagement simple. Du vin singulier, et un sommelier dédié au bout du fil.</p>
+
+          <ul class="b2b-advantages">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Tarifs dégressifs dès 12 bouteilles.</strong> Remises volume, structures de prix claires, conditions à 30 jours.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Sommelier pro dédié.</strong> Aide à la carte des vins, dégustations en établissement, formation du personnel de salle.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Cadeaux d'affaires premium.</strong> Coffrets personnalisés, étiquettes sur-mesure, expédition multi-adresses France et UE.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Livraison express.</strong> 48h partout en France, transport frigorifique sur les cuvées sensibles.</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="b2b-form" data-reveal action="#" method="post" novalidate>
+          <h3>Ouvrir un <em>compte pro</em></h3>
+          <span class="sub">Réponse sous 24h ouvrées</span>
+
+          <div class="row">
+            <div class="field">
+              <label for="b2b-nom">Nom</label>
+              <input class="input" type="text" id="b2b-nom" name="your-name" placeholder="Nom complet" required>
+            </div>
+            <div class="field">
+              <label for="b2b-mail">E-mail pro</label>
+              <input class="input" type="email" id="b2b-mail" name="your-email" placeholder="contact@etablissement.fr" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="b2b-etab">Établissement</label>
+            <input class="input" type="text" id="b2b-etab" name="your-company" placeholder="Nom de l'établissement" required>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="b2b-siret">SIRET</label>
+              <input class="input" type="text" id="b2b-siret" name="your-siret" placeholder="14 chiffres" pattern="[0-9 ]{14,17}">
+            </div>
+            <div class="field">
+              <label for="b2b-sect">Activité</label>
+              <select class="select" id="b2b-sect" name="your-sector" required>
+                <option value="">Choisir…</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="hotel">Hôtel</option>
+                <option value="caviste">Caviste</option>
+                <option value="ce">Comité d'entreprise</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="b2b-vol">Volume estimé / an</label>
+            <select class="select" id="b2b-vol" name="your-volume">
+              <option value="">Sélectionner…</option>
+              <option>- 500 bouteilles</option>
+              <option>500 - 2 000 bouteilles</option>
+              <option>2 000 - 10 000 bouteilles</option>
+              <option>+ 10 000 bouteilles</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn--gold btn--lg">Demander l'accès pro
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <p class="fine">En soumettant ce formulaire, vous acceptez d'être recontacté par nos équipes. Vos données sont confidentielles et ne sont jamais partagées. <a href="/mentions" class="link-under" style="color:rgba(246,241,231,.65)">Mentions légales</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-journal.php
+       ================================================================ -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Le journal</span>
+          <h2 class="display-xl">Le <em>magazine</em> de la cave</h2>
+        </div>
+        <div class="subhead">
+          Cahiers de dégustation, voyages de domaine, accords mets, histoires de cépages. Tout ce que nos sommeliers vivent, partagé ici.
+          <br><a href="en-preparation.html" class="link-under" style="display:inline-block;margin-top:16px">Tous les articles →</a>
+        </div>
+      </header>
+
+      <div class="journal-rail">
+        <article class="ed-card" data-reveal>
+          <div class="media" style="background: linear-gradient(135deg, #3F1D2E, #1A0814)">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&auto=format&fit=crop" alt="" loading="lazy">
+          </div>
+          <div class="body">
+            <span class="category">Voyage · Piémont</span>
+            <h3>La <em>Barolo 2020</em>,<br>un millésime qui redéfinit.</h3>
+            <p class="excerpt">Huit jours dans les Langhe pour comprendre ce que ce millésime fait aux nebbiolo. Nos notes, nos coups de cœur, et ce qui arrive en cave.</p>
+            <span class="meta">8 min · 12 avril 2026</span>
+          </div>
+        </article>
+
+        <article class="ed-card" data-reveal>
+          <div class="media" style="background: linear-gradient(135deg, #4F5A3A, #1F2614)">
+            <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&auto=format&fit=crop" alt="" loading="lazy">
+          </div>
+          <div class="body">
+            <span class="category">Accords mets · Hiver</span>
+            <h3>Cinq vins pour une <em>table d'hiver</em>.</h3>
+            <p class="excerpt">Du velouté de panais au gibier, de l'oie à la bûche : notre sommelière Sonia passe en revue les cinq bouteilles qui traversent le repas sans coup férir.</p>
+            <span class="meta">6 min · 02 avril 2026</span>
+          </div>
+        </article>
+
+        <article class="ed-card" data-reveal>
+          <div class="media" style="background: linear-gradient(135deg, #5A2145, #2A0F20)">
+            <img src="https://images.unsplash.com/photo-1566452348683-abbc045afcd4?w=800&auto=format&fit=crop" alt="" loading="lazy">
+          </div>
+          <div class="body">
+            <span class="category">Focus · Liban</span>
+            <h3>La <em>Bekaa</em>, terre<br>de résistance.</h3>
+            <p class="excerpt">Six mille ans de vin sur une plaine de 120 km. Récit d'un voyage au plus haut vignoble du Moyen-Orient, chez Musar, Kefraya et Tourelles.</p>
+            <span class="meta">14 min · 20 mars 2026</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-club.php
+       Newsletter / Club Beryte
+       ================================================================ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="club-teaser" data-reveal>
+        <div>
+          <span class="eyebrow">Club Beryte</span>
+          <h2>Rejoignez le <em>cercle</em><br>de la cave.</h2>
+          <p>Une lettre mensuelle signée par la cheffe de cave, les arrivages avant tout le monde, des dégustations privées à Blanquefort et Paris, les pépites des vinifications confidentielles. Gratuit, sans engagement, désinscription en un clic.</p>
+          <form class="club-form" action="#" method="post">
+            <label for="club-mail" class="sr-only">Adresse e-mail</label>
+            <input class="input" type="email" id="club-mail" placeholder="Votre adresse e-mail" required name="your-email">
+            <button type="submit" class="btn btn--gold">S'inscrire
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <ul class="club-privileges">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>La lettre mensuelle</strong> signée par la cheffe de cave</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Arrivages en avant-première</strong> 48h avant la mise en ligne</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Dégustations privées</strong> deux fois par an à la cave</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>-8 % sur les coffrets</strong> cadeaux et découverte</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/home-trust.php
+       ================================================================ -->
+  <section>
+    <div class="container">
+      <div class="trust">
+        <div class="trust-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+          <h4>Livraison offerte dès 120 €</h4>
+          <p>Expédition 48h France métropolitaine. Emballage anti-casse garanti.</p>
+        </div>
+        <div class="trust-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg></div>
+          <h4>Sélection sommelier</h4>
+          <p>Chaque cuvée goûtée et validée. 120+ domaines en direct producteur.</p>
+        </div>
+        <div class="trust-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h4>Paiement sécurisé</h4>
+          <p>3× sans frais dès 150 €. CB, Apple Pay, virement, Paypal, Alma.</p>
+        </div>
+        <div class="trust-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div>
+          <h4>Conseil sommelier</h4>
+          <p>Par e-mail, téléphone ou en boutique à Blanquefort. Du lundi au samedi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================================================
+     TEMPLATE: footer.php
+     ================================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="inner">
+
+      <div class="brand-col">
+        <div class="wordmark">Beryte<em> Wine</em></div>
+        <div class="tagline">Le vin dans toute sa splendeur</div>
+        <p class="addr">
+          22 rue Saint-Exupéry<br>
+          33290 Blanquefort · France<br><br>
+          <a href="mailto:beryte.wine.shop@outlook.com" style="color:var(--c-gold)" class="link-under">beryte.wine.shop@outlook.com</a><br>
+          <a href="tel:+33000000000" style="color:rgba(246,241,231,.85)" class="link-under">+33 5 00 00 00 00</a>
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="widget-area" id="footer-widget-1">
+        <h5>La cave</h5>
+        <ul>
+          <li><a href="nos-vins.html">Tous les vins</a></li>
+          <li><a href="nos-vins.html?cat=champagnes">Champagnes</a></li>
+          <li><a href="nos-vins.html?cat=spiritueux">Spiritueux</a></li>
+          <li><a href="nos-vins.html?cat=bieres">Bières craft</a></li>
+          <li><a href="nos-vins.html?focus=coffrets">Coffrets</a></li>
+          <li><a href="nos-vins.html?focus=pepites">Pépites</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-2">
+        <h5>Terroirs</h5>
+        <ul>
+          <li><a href="nos-vins.html?pays=italie">Italie</a></li>
+          <li><a href="nos-vins.html?pays=espagne">Espagne</a></li>
+          <li><a href="nos-vins.html?pays=argentine">Argentine</a></li>
+          <li><a href="nos-vins.html?pays=france">France</a></li>
+          <li><a href="liban.html">Liban</a></li>
+          <li><a href="nos-vins.html?pays=portugal">Portugal</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-3">
+        <h5>Maison</h5>
+        <ul>
+          <li><a href="en-preparation.html">Notre histoire</a></li>
+          <li><a href="liban.html">L'ADN Liban</a></li>
+          <li><a href="en-preparation.html">Le Journal</a></li>
+          <li><a href="en-preparation.html">Club Beryte</a></li>
+          <li><a href="pro.html">Espace pro</a></li>
+          <li><a href="en-preparation.html">Boutique physique</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-4">
+        <h5>Aide</h5>
+        <ul>
+          <li><a href="en-preparation.html">Nous contacter</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Paiement & sécurité</a></li>
+          <li><a href="#">Conservation</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="en-preparation.html">Mon compte</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div>© 2026 Beryte Wine · SIRET 123 456 789 00012 · Licence IV</div>
+      <div class="pay">
+        <span>VISA</span>
+        <span>MASTERCARD</span>
+        <span>APPLE PAY</span>
+        <span>ALMA 3×</span>
+        <span>PAYPAL</span>
+      </div>
+      <div>
+        <a href="#">Mentions légales</a> ·
+        <a href="#">CGV</a> ·
+        <a href="#">Confidentialité</a> ·
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/evin-banner.php (Loi Evin sticky)
+     ================================================================ -->
+<div class="evin" role="note">
+  <em>L'abus d'alcool est dangereux pour la santé</em> · à consommer avec modération
+</div>
+
+<script>
+/* ===============================================================
+   Beryte Home · minimal JS
+   =============================================================== */
+
+/* Age gate cookie check */
+(function(){
+  try {
+    if (localStorage.getItem('beryte_age_ok') === '1' || document.cookie.indexOf('beryte_age_ok=1') !== -1) {
+      var g = document.getElementById('ageGate');
+      if (g) g.style.display = 'none';
+    }
+  } catch(e){}
+})();
+
+/* Sticky header shadow on scroll */
+(function(){
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function onScroll(){
+    if (window.scrollY > 8) h.classList.add('is-scrolled');
+    else h.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
+      if (e.isIntersecting) {
+        setTimeout(function(){ e.target.classList.add('is-visible'); }, i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+
+/* Cart count bump */
+function bumpCart(){
+  var c = document.getElementById('cartCount');
+  if (!c) return;
+  var n = parseInt(c.textContent || '0', 10);
+  c.textContent = (n + 1);
+  c.classList.add('bump');
+  setTimeout(function(){ c.classList.remove('bump'); }, 420);
+}
+</script>
+
+</body>
+</html>

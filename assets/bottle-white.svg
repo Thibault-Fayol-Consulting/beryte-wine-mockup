@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 320" fill="none">
+  <defs>
+    <linearGradient id="wh-glass" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#A8B890" stop-opacity=".85"></stop>
+      <stop offset="40%" stop-color="#7A8A60" stop-opacity=".9"></stop>
+      <stop offset="100%" stop-color="#4A5838" stop-opacity=".95"></stop>
+    </linearGradient>
+    <linearGradient id="wh-content" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5E8B8" stop-opacity="0"></stop>
+      <stop offset="60%" stop-color="#F5E8B8" stop-opacity=".4"></stop>
+      <stop offset="100%" stop-color="#D8B858" stop-opacity=".6"></stop>
+    </linearGradient>
+    <linearGradient id="wh-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"></stop>
+      <stop offset="50%" stop-color="#fff" stop-opacity=".5"></stop>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+    </linearGradient>
+    <linearGradient id="wh-cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C8B888"></stop>
+      <stop offset="50%" stop-color="#E8D8A8"></stop>
+      <stop offset="100%" stop-color="#A89868"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="40" y="18" width="20" height="40" fill="url(#wh-cap)" rx="1"></rect>
+  
+  <path d="M42 58 L42 115 Q42 120 40 128 L32 160 Q28 170 28 182 L28 290 Q28 305 40 305 L60 305 Q72 305 72 290 L72 182 Q72 170 68 160 L60 128 Q58 120 58 115 L58 58 Z" fill="url(#wh-glass)"></path>
+  <path d="M28 182 L72 182 L72 295 Q72 303 66 303 L34 303 Q28 303 28 295 Z" fill="url(#wh-content)" opacity=".6"></path>
+  <path d="M32 170 L32 290 Q32 298 37 298 L40 298 L40 170 Z" fill="url(#wh-shine)"></path>
+  
+  <rect x="28" y="195" width="44" height="70" fill="#FAF2DC"></rect>
+  <rect x="28" y="195" width="44" height="12" fill="#C8A858"></rect>
+  <text x="50" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#FAF2DC" letter-spacing="1.5">BLANC</text>
+  <text x="50" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#4A3820" font-style="italic">Riesling</text>
+  <text x="50" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#6B5030" letter-spacing="1">GRAND CRU</text>
+  <line x1="40" y1="246" x2="60" y2="246" stroke="#C8A858" stroke-width=".4"></line>
+  <text x="50" y="256" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#8B7040" font-style="italic">2021</text>
+</svg>

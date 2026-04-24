@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 320" fill="none">
+  <defs>
+    <linearGradient id="bdx-glass" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#4A1820"></stop>
+      <stop offset="35%" stop-color="#2A0A10"></stop>
+      <stop offset="65%" stop-color="#1A0508"></stop>
+      <stop offset="100%" stop-color="#0F0305"></stop>
+    </linearGradient>
+    <linearGradient id="bdx-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"></stop>
+      <stop offset="45%" stop-color="#fff" stop-opacity=".18"></stop>
+      <stop offset="55%" stop-color="#fff" stop-opacity=".28"></stop>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+    </linearGradient>
+    <linearGradient id="bdx-cap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2A1810"></stop>
+      <stop offset="50%" stop-color="#5A3A28"></stop>
+      <stop offset="100%" stop-color="#1A0F08"></stop>
+    </linearGradient>
+  </defs>
+  
+  <rect x="40" y="18" width="20" height="38" fill="url(#bdx-cap)" rx="1"></rect>
+  <rect x="40" y="18" width="20" height="3" fill="#6B4028" opacity=".7"></rect>
+  
+  <path d="M42 56 L42 110 Q42 115 38 120 L28 140 Q22 150 22 165 L22 290 Q22 305 35 305 L65 305 Q78 305 78 290 L78 165 Q78 150 72 140 L62 120 Q58 115 58 110 L58 56 Z" fill="url(#bdx-glass)"></path>
+  
+  <path d="M32 140 L32 290 Q32 298 38 298 L42 298 L42 140 Z" fill="url(#bdx-shine)"></path>
+  
+  <rect x="28" y="180" width="44" height="80" fill="#F5EDD8"></rect>
+  <rect x="28" y="180" width="44" height="2" fill="#8B2030"></rect>
+  <rect x="28" y="258" width="44" height="2" fill="#8B2030"></rect>
+  <text x="50" y="210" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#2A1A10" font-style="italic">Château</text>
+  <text x="50" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#6B5040" letter-spacing="1">— 2018 —</text>
+  <line x1="38" y1="232" x2="62" y2="232" stroke="#8B2030" stroke-width=".5"></line>
+  <text x="50" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#6B5040" letter-spacing=".5">BORDEAUX</text>
+</svg>

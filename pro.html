@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A1410">
+<meta name="description" content="Beryte Wine Espace Pro · Solutions B2B pour restaurateurs, hôteliers, cavistes et cadeaux d'affaires. 140+ établissements partenaires, sommelier dédié, 48h expédition.">
+<title>Espace Pro · Beryte Wine · Votre cave B2B dédiée · Restaurateurs, Hôtels, Cavistes</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+/* =====================================================
+   PRO · styles spécifiques B2B landing
+   ===================================================== */
+
+/* ========== BREADCRUMB ========== */
+.pro-breadcrumb {
+  background: var(--c-cream);
+  border-bottom: 1px solid var(--c-border);
+  padding: 14px 0;
+}
+.pro-breadcrumb nav {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pro-breadcrumb a { color: var(--c-ink-3); transition: color var(--t-fast) var(--ease); }
+.pro-breadcrumb a:hover { color: var(--c-purple); }
+.pro-breadcrumb .sep { color: var(--c-gold); }
+.pro-breadcrumb .current { color: var(--c-ink); }
+
+/* ========== HERO PRO ========== */
+.pro-hero {
+  background: radial-gradient(ellipse at 25% 15%, var(--c-purple) 0%, var(--c-purple-deep) 55%, #1A0814 100%);
+  color: var(--c-cream);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 112px) 0 clamp(72px, 8vw, 128px);
+}
+.pro-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .45;
+  pointer-events: none;
+}
+.pro-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 85% 80%, rgba(200,169,107,.22), transparent 60%);
+  pointer-events: none;
+}
+.pro-hero > * { position: relative; z-index: 2; }
+
+.pro-hero-grid {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+}
+.pro-hero h1 { color: var(--c-cream); margin: 28px 0 28px; }
+.pro-hero h1 em { color: var(--c-gold); font-style: italic; }
+.pro-hero .lead { color: rgba(246,241,231,.82); margin-bottom: 32px; max-width: 44ch; }
+.pro-hero .eyebrow { color: var(--c-gold); margin-bottom: 0; }
+.pro-hero .eyebrow::before { background: var(--c-gold); }
+
+.pro-inline-stats {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(200,169,107,.25);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(246,241,231,.78);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+}
+.pro-inline-stats strong {
+  color: var(--c-gold);
+  font-family: var(--ff-display);
+  font-size: 22px;
+  font-weight: 350;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  display: block;
+  font-variant-numeric: oldstyle-nums;
+  margin-bottom: 4px;
+}
+
+.pro-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ========== HERO FORM ========== */
+.pro-form-card {
+  background: var(--c-cream);
+  color: var(--c-ink);
+  padding: clamp(28px, 3vw, 40px);
+  border-top: 3px solid var(--c-gold);
+  box-shadow: var(--shadow-xl);
+  position: sticky;
+  top: 92px;
+}
+.pro-form-card h3 {
+  font-family: var(--ff-display);
+  font-size: 28px;
+  font-weight: 350;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--c-ink);
+}
+.pro-form-card h3 em { color: var(--c-purple); font-style: italic; }
+.pro-form-card .sub {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-gold-deep);
+  font-weight: 600;
+  font-feature-settings: 'smcp';
+  margin-bottom: 22px;
+}
+.pro-form-card .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pro-form-card .btn { width: 100%; }
+.pro-form-card .fine {
+  font-size: 11.5px;
+  color: var(--c-ink-3);
+  line-height: 1.55;
+  margin-top: 14px;
+}
+
+/* ========== PROFILS PRO ========== */
+.profils-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.profil-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  padding: clamp(28px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all var(--t-med) var(--ease);
+}
+.profil-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--c-border-3);
+}
+.profil-card .ico-circle {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--c-cream-2);
+  border: 1px solid var(--c-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold-deep);
+  flex-shrink: 0;
+}
+.profil-card .ico-circle svg { width: 24px; height: 24px; stroke-width: 1.5; }
+.profil-card h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 350;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.profil-card h3 em { font-style: italic; color: var(--c-purple); }
+.profil-card .lead { font-size: 14.5px; margin: 0; max-width: none; }
+.profil-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profil-card ul li {
+  font-size: 13.5px;
+  color: var(--c-ink-2);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+.profil-card ul li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  top: -3px;
+  color: var(--c-gold-deep);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ========== AVANTAGES ========== */
+.avantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 36px;
+}
+.avantage {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 8px 0;
+}
+.avantage .ico-circle {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--c-cream-2);
+  border: 1px solid var(--c-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold-deep);
+}
+.avantage .ico-circle svg { width: 22px; height: 22px; stroke-width: 1.6; }
+.avantage h4 {
+  font-family: var(--ff-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.avantage p {
+  font-size: 14px;
+  color: var(--c-ink-2);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 34ch;
+}
+
+/* ========== TÉMOIGNAGES ========== */
+.temoignages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.temoignage {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.temoignage::before {
+  content: "\201C";
+  position: absolute;
+  top: 10px;
+  right: 22px;
+  font-family: var(--ff-display);
+  font-size: 72px;
+  color: var(--c-gold);
+  opacity: .3;
+  line-height: 1;
+  font-style: italic;
+}
+.temoignage blockquote {
+  margin: 0;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+}
+.temoignage blockquote em { color: var(--c-purple); }
+.temoignage .sig { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--c-border); }
+.temoignage .av {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--c-purple);
+  color: var(--c-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 16px;
+  font-weight: 400;
+  flex-shrink: 0;
+  font-style: italic;
+}
+.temoignage .who { display: flex; flex-direction: column; gap: 2px; }
+.temoignage .who .n { font-size: 13.5px; font-weight: 600; color: var(--c-ink); }
+.temoignage .who .r {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-feature-settings: 'smcp';
+}
+
+/* ========== FAQ ========== */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--c-border);
+}
+.faq-list details {
+  border-bottom: 1px solid var(--c-border);
+  padding: 4px 0;
+}
+.faq-list summary {
+  list-style: none;
+  padding: 22px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--ff-display);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  transition: color var(--t-fast) var(--ease);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary:hover { color: var(--c-purple); }
+.faq-list summary::after {
+  content: "+";
+  font-family: var(--ff-display);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--c-gold-deep);
+  line-height: 1;
+  transition: transform var(--t-med) var(--ease);
+  flex-shrink: 0;
+}
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p {
+  font-size: 15px;
+  color: var(--c-ink-2);
+  line-height: 1.65;
+  padding: 0 0 22px;
+  max-width: 70ch;
+  margin: 0;
+}
+
+/* ========== CTA FINAL ========== */
+.pro-cta-final {
+  text-align: center;
+  padding: clamp(48px, 6vw, 88px) 0;
+}
+.pro-cta-final h2 {
+  font-size: clamp(40px, 5.5vw, 76px);
+  font-weight: 300;
+  line-height: .98;
+  letter-spacing: -0.035em;
+  margin-bottom: 28px;
+  font-variation-settings: 'opsz' 96;
+}
+.pro-cta-final h2 em { color: var(--c-purple); font-style: italic; }
+.pro-cta-final .lead { margin: 0 auto 36px; text-align: center; }
+.pro-cta-final .actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .pro-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pro-form-card { position: static; }
+  .profils-grid { grid-template-columns: 1fr; }
+  .avantages-grid { grid-template-columns: repeat(2, 1fr); }
+  .temoignages-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .avantages-grid { grid-template-columns: 1fr; gap: 24px; }
+  .pro-form-card .row { grid-template-columns: 1fr; }
+  .pro-inline-stats { gap: 18px; }
+  .pro-hero-actions { flex-direction: column; align-items: stretch; }
+  .pro-hero-actions .btn { width: 100%; }
+  .pro-cta-final .actions { flex-direction: column; }
+  .pro-cta-final .actions .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TEMPLATE: template-parts/age-gate.php -->
+<div class="age-gate" id="ageGate" role="dialog" aria-labelledby="ageGateTitle" aria-modal="true">
+  <div class="age-gate-card">
+    <div class="logo-wrap"><img src="assets/logo.png" alt="Beryte Wine"></div>
+    <h2 id="ageGateTitle">Avez-vous <em>l'âge légal</em><br>pour entrer ?</h2>
+    <p>L'accès à notre cave est réservé aux personnes majeures. En entrant, vous confirmez avoir 18 ans ou plus.</p>
+    <div class="actions">
+      <button type="button" class="btn btn--line" onclick="document.getElementById('ageGate').style.display='none'; try{localStorage.setItem('beryte_age_ok','1');}catch(e){}">Oui, j'entre</button>
+      <a href="https://www.google.com" class="btn btn--ghost" style="color:var(--c-ink); border-color:var(--c-border-2)">Non, quitter</a>
+    </div>
+    <p class="evin-note">L'abus d'alcool est dangereux pour la santé</p>
+  </div>
+</div>
+
+<!-- TEMPLATE: header.php -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <ul class="menu primary-menu" style="display:flex; gap:28px; list-style:none; margin:0; padding:0;">
+        <li class="menu-item"><a href="nos-vins.html">Nos vins</a></li>
+        <li class="menu-item"><a href="nos-vins.html#champagnes">Champagnes</a></li>
+        <li class="menu-item"><a href="nos-vins.html#spiritueux">Spiritueux</a></li>
+        <li class="menu-item"><a href="liban.html">Liban</a></li>
+        <li class="menu-item"><a href="en-preparation.html">Journal</a></li>
+        <li class="menu-item"><a href="pro.html" class="is-active">Espace pro</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="Beryte Wine · retour à l'accueil">
+      <span class="beryte">Beryte</span>
+      <span class="wine">Wine</span>
+    </a>
+
+    <div class="util-nav">
+      <button type="button" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="hidden-mobile">Rechercher</span>
+      </button>
+      <a href="en-preparation.html" aria-label="Connexion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="hidden-mobile">Compte</span>
+      </a>
+      <button type="button" class="cart-toggle" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="hidden-mobile">Panier</span>
+        <span class="cart-count" id="cartCount">2</span>
+      </button>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- TEMPLATE: template-parts/breadcrumb.php -->
+<div class="pro-breadcrumb">
+  <div class="container">
+    <nav aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="sep">·</span>
+      <span class="current">Espace pro</span>
+    </nav>
+  </div>
+</div>
+
+<main id="main" role="main">
+
+  <!-- TEMPLATE: page-pro.php · SECTION 1 · Hero conversion B2B -->
+  <section class="pro-hero">
+    <div class="container">
+      <div class="pro-hero-grid">
+
+        <div class="pro-hero-copy" data-reveal>
+          <span class="eyebrow eyebrow--gold">Espace pro · B2B</span>
+          <h1 class="display-xl">Votre cave,<br>à l'<em>échelle</em><br>de vos tables.</h1>
+          <p class="lead">Restaurateurs étoilés, hôteliers, cavistes indépendants, comités d'entreprise exigeants : Beryte Wine vous accompagne avec une sélection d'auteur, un sommelier dédié et une logistique calibrée pour la profession. Tarifs dégressifs, conditions à 30 jours, coffrets sur-mesure.</p>
+
+          <div class="pro-inline-stats">
+            <div><strong>140+</strong>Établissements partenaires</div>
+            <div><strong>48h</strong>Expédition France</div>
+            <div><strong>1·1</strong>Sommelier dédié</div>
+          </div>
+
+          <div class="pro-hero-actions">
+            <a href="#form-pro" class="btn btn--gold btn--lg">Ouvrir un compte pro
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="btn btn--ghost btn--lg">Catalogue pro PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <aside class="pro-form-card" data-reveal id="form-pro" aria-label="Ouvrir un compte pro">
+          <h3>Ouvrir un <em>compte pro</em></h3>
+          <span class="sub">Réponse sous 24h ouvrées</span>
+
+          <form action="#" method="post" novalidate>
+            <div class="row">
+              <div class="field">
+                <label for="pro-nom">Nom</label>
+                <input class="input" type="text" id="pro-nom" name="your-name" placeholder="Nom complet" required>
+              </div>
+              <div class="field">
+                <label for="pro-tel">Téléphone</label>
+                <input class="input" type="tel" id="pro-tel" name="your-phone" placeholder="06 00 00 00 00" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="pro-mail">E-mail pro</label>
+              <input class="input" type="email" id="pro-mail" name="your-email" placeholder="contact@etablissement.fr" required>
+            </div>
+
+            <div class="field">
+              <label for="pro-etab">Établissement</label>
+              <input class="input" type="text" id="pro-etab" name="your-company" placeholder="Nom de l'établissement" required>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="pro-siret">SIRET</label>
+                <input class="input" type="text" id="pro-siret" name="your-siret" placeholder="14 chiffres" pattern="[0-9 ]{14,17}">
+              </div>
+              <div class="field">
+                <label for="pro-sect">Secteur</label>
+                <select class="select" id="pro-sect" name="your-sector" required>
+                  <option value="">Choisir…</option>
+                  <option value="restaurant">Restaurant</option>
+                  <option value="hotel">Hôtel</option>
+                  <option value="caviste">Caviste</option>
+                  <option value="ce">Comité d'entreprise</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="pro-vol">Volume estimé / an</label>
+              <select class="select" id="pro-vol" name="your-volume" required>
+                <option value="">Sélectionner…</option>
+                <option value="moins-500">Moins de 500 bouteilles</option>
+                <option value="500-2000">500 à 2 000 bouteilles</option>
+                <option value="2000-10000">2 000 à 10 000 bouteilles</option>
+                <option value="plus-10000">Plus de 10 000 bouteilles</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn--gold btn--lg">Recevoir mon accès sous 24h
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <p class="fine">En soumettant ce formulaire, vous acceptez d'être recontacté par notre équipe pro. Données confidentielles, jamais partagées. <a href="#" class="link-under">Mentions légales</a>.</p>
+          </form>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 · 4 profils pro -->
+  <section class="section section--cream-2">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Pour qui ?</span>
+          <h2 class="display-xl">Quatre <em>métiers</em>,<br>une même exigence.</h2>
+        </div>
+        <div class="subhead">
+          Chaque typologie d'établissement a ses contraintes, ses tempos, ses marges. Nos offres pro sont pensées pour s'adapter à votre réalité, du bistrot de quartier au palace 5 étoiles.
+        </div>
+      </header>
+
+      <div class="profils-grid">
+
+        <article class="profil-card" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M5 11v9M19 11v9M8 15h8"/></svg>
+          </div>
+          <h3><em>Restaurateurs</em></h3>
+          <p class="lead">Cartes des vins vivantes, accords signatures, allotments sur millésimes recherchés. Votre sommelier Beryte construit votre sélection avec vous.</p>
+          <ul>
+            <li>Co-construction de votre carte au verre et bouteille</li>
+            <li>Formation gratuite de vos équipes de salle · 4× par an</li>
+            <li>Allotments prioritaires sur Musar, Gaja, Palacios</li>
+          </ul>
+          <a href="#form-pro" class="link-under label" style="color:var(--c-purple);margin-top:auto">En savoir plus →</a>
+        </article>
+
+        <article class="profil-card" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 21V7l9-4 9 4v14M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/></svg>
+          </div>
+          <h3><em>Hôtels</em> & Palaces</h3>
+          <p class="lead">Room-service, minibar, bar de nuit, restaurant gastronomique. Une cave unique, quatre points de vente, une facturation consolidée.</p>
+          <ul>
+            <li>Minibar réassort mensuel programmé</li>
+            <li>Cave à vin installation · audit · catalogage</li>
+            <li>Dégustations team building pour vos équipes</li>
+          </ul>
+          <a href="#form-pro" class="link-under label" style="color:var(--c-purple);margin-top:auto">En savoir plus →</a>
+        </article>
+
+        <article class="profil-card" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v7a4 4 0 0 0 8 0V2M6 2h12M10 22v-9M14 22v-9M6 22h12"/></svg>
+          </div>
+          <h3>Cavistes <em>revendeurs</em></h3>
+          <p class="lead">Accès au catalogue confidentiel Beryte, remises dégressives selon volume, exclusivités territoriales négociables sur certaines cuvées libanaises.</p>
+          <ul>
+            <li>Portail B2B dédié · stock en temps réel</li>
+            <li>Fiches produits haute-résolution libres de droits</li>
+            <li>Exclusivités Bekaa · 12 domaines libanais rares</li>
+          </ul>
+          <a href="#form-pro" class="link-under label" style="color:var(--c-purple);margin-top:auto">En savoir plus →</a>
+        </article>
+
+        <article class="profil-card" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          </div>
+          <h3>Cadeaux <em>d'affaires</em> CE</h3>
+          <p class="lead">Coffrets prestige personnalisables, étiquettes sur-mesure, livraison multi-adresses en France et Union européenne. De 10 à 10 000 destinataires.</p>
+          <ul>
+            <li>Coffrets à partir de 45 € · jusqu'à 480 €</li>
+            <li>Gravure étiquette · papier carte de votre logo</li>
+            <li>Expéditions groupées ou multi-adresses France · UE</li>
+          </ul>
+          <a href="#form-pro" class="link-under label" style="color:var(--c-purple);margin-top:auto">En savoir plus →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 · 6 avantages pro -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Les avantages pro</span>
+          <h2 class="display-xl">Six <em>engagements</em>,<br>zéro friction.</h2>
+        </div>
+        <div class="subhead">
+          Parce qu'un compte pro ne se résume pas à une remise volume. Nos partenaires bénéficient d'un accompagnement complet, pensé par et pour la profession.
+        </div>
+      </header>
+
+      <div class="avantages-grid">
+
+        <div class="avantage" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h4>Tarifs dégressifs</h4>
+          <p>Remises volume à partir de 12 bouteilles. Grille transparente, structures claires selon CA annuel partagé.</p>
+        </div>
+
+        <div class="avantage" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M12.5 7.5A3.5 3.5 0 1 1 5.5 7.5a3.5 3.5 0 0 1 7 0z"/></svg>
+          </div>
+          <h4>Sommelier dédié</h4>
+          <p>Un interlocuteur unique, joignable directement, qui connaît votre établissement, vos millésimes, vos contraintes.</p>
+        </div>
+
+        <div class="avantage" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M14 15l7-7M8 21H3v-5M10 9l-7 7"/></svg>
+          </div>
+          <h4>Logistique dédiée</h4>
+          <p>Expédition 48h partout en France, transport frigorifique sur les cuvées sensibles, créneaux de livraison respectés.</p>
+        </div>
+
+        <div class="avantage" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          </div>
+          <h4>Facturation 30j</h4>
+          <p>Conditions de paiement à 30 jours fin de mois dès le deuxième mois d'activité, sous validation du dossier.</p>
+        </div>
+
+        <div class="avantage" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4M4 6v14a2 2 0 0 0 2 2h14v-4M18 12a2 2 0 0 0 0 4h4v-4h-4z"/></svg>
+          </div>
+          <h4>Coffrets personnalisés</h4>
+          <p>Composition à la bouteille, étiquettes sur-mesure, gravure, messages carte. Prototypes en 5 jours ouvrés.</p>
+        </div>
+
+        <div class="avantage" data-reveal>
+          <div class="ico-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h4>Catalogue digital</h4>
+          <p>Portail B2B avec stock temps réel, fiches techniques téléchargeables, historique commandes et factures accessibles 24/7.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 · Témoignages -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Paroles pro</span>
+          <h2 class="display-xl">Ils nous ont <em>fait confiance</em>.</h2>
+        </div>
+        <div class="subhead">
+          140 établissements partenaires en France, de Bordeaux à Nice, de Paris aux stations alpines. Trois voix parmi celles qui construisent leur cave avec Beryte depuis plusieurs années.
+        </div>
+      </header>
+
+      <div class="temoignages-grid">
+
+        <figure class="temoignage" data-reveal>
+          <blockquote>L'allotment sur les <em>Musar</em> nous a changé la vie. Depuis deux ans, nos clients retrouvent chez nous des millésimes que plus personne n'a. Et le sommelier répond sous l'heure.</blockquote>
+          <figcaption class="sig">
+            <div class="av">MD</div>
+            <div class="who">
+              <span class="n">Mathieu Delacourt</span>
+              <span class="r">Restaurant L'Arcane · Bordeaux</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="temoignage" data-reveal>
+          <blockquote>Je revends du Beryte depuis 2019. Ce qui fait la différence, c'est l'<em>exclusivité</em> Bekaa. Pas un autre caviste à Paris ne propose ce catalogue libanais. Mes clients me suivent pour ça.</blockquote>
+          <figcaption class="sig">
+            <div class="av">CL</div>
+            <div class="who">
+              <span class="n">Clémence Lambert</span>
+              <span class="r">Cave Lambert · Paris 11e</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="temoignage" data-reveal>
+          <blockquote>Nous gérons quatre points de vente dans l'hôtel, du bar de nuit au restaurant gastronomique. Avec Beryte, une seule <em>facturation consolidée</em>, et un suivi qui ne lâche rien.</blockquote>
+          <figcaption class="sig">
+            <div class="av">AR</div>
+            <div class="who">
+              <span class="n">Alessandro Ricci</span>
+              <span class="r">Hôtel Villa Méditerranée · Nice</span>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 · FAQ pro -->
+  <section class="section section--cream-2">
+    <div class="container container--mid">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Questions fréquentes</span>
+          <h2 class="display-xl">Les <em>réponses</em><br>avant la rencontre.</h2>
+        </div>
+        <div class="subhead">
+          Les questions que nos prospects pro nous posent le plus souvent, avant d'ouvrir un compte. Si la vôtre n'y figure pas, notre équipe est joignable directement.
+        </div>
+      </header>
+
+      <div class="faq-list" data-reveal>
+
+        <details>
+          <summary>Y a-t-il un volume minimum de commande ?</summary>
+          <p>Pas de minimum strict à l'ouverture du compte. Les remises dégressives s'activent à partir de 12 bouteilles par commande, et la livraison France est offerte dès 12 bouteilles également. Au-delà de 500 bouteilles sur l'année, une grille tarifaire spécifique est négociée avec votre sommelier dédié.</p>
+        </details>
+
+        <details>
+          <summary>Quels sont les délais de paiement accordés ?</summary>
+          <p>Les premières commandes se règlent au comptant par virement ou CB. Dès le deuxième mois d'activité et après validation du dossier commercial (SIRET, K-bis, attestation de vigilance), nous basculons sur des conditions à 30 jours fin de mois. Pour les structures importantes, des conditions à 45 jours peuvent être négociées.</p>
+        </details>
+
+        <details>
+          <summary>Gérez-vous les livraisons multi-adresses ?</summary>
+          <p>Oui, c'est même une de nos spécialités pour les comités d'entreprise et les cadeaux d'affaires. Jusqu'à 10 000 destinataires par opération, en France et Union européenne, avec suivi individualisé. Un fichier CSV suffit, notre équipe logistique s'occupe du reste.</p>
+        </details>
+
+        <details>
+          <summary>Quelle est votre politique en cas de casse transport ?</summary>
+          <p>Toute casse constatée à la livraison est remplacée sous 48h, sans justificatif autre qu'une photo. Notre transporteur partenaire dispose d'emballages spécifiques bouteilles, et les cuvées rares sont systématiquement expédiées en caisses bois carton double. Le taux de casse constaté sur 2025 est inférieur à 0,3%.</p>
+        </details>
+
+        <details>
+          <summary>Livrez-vous en Europe et à l'international ?</summary>
+          <p>Oui, l'Union européenne est couverte en 3 à 5 jours ouvrés. Pour les destinations hors UE (Suisse, Royaume-Uni, Émirats, États-Unis), nous travaillons avec un transitaire dédié qui gère formalités douanières et droits d'accises. Devis sur demande selon destination et volume.</p>
+        </details>
+
+        <details>
+          <summary>Organisez-vous des dégustations sur site ?</summary>
+          <p>Absolument, et c'est un de nos engagements forts. Notre sommelière Sonia Hoayek se déplace gratuitement chez nos partenaires restaurants et hôtels, pour former les équipes de salle, construire la carte au verre, ou animer une dégustation privée. Minimum quatre sessions par an pour les comptes actifs.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 · CTA final -->
+  <section class="section">
+    <div class="container container--prose">
+      <div class="pro-cta-final" data-reveal>
+        <span class="eyebrow" style="justify-content:center">Prêt à démarrer ?</span>
+        <h2 style="margin-top:24px">Discutons de votre <em>cave</em>.</h2>
+        <p class="lead">Un compte pro Beryte s'ouvre en 24h ouvrées. Un appel de 20 minutes avec notre sommelier pro suffit pour comprendre vos besoins, aligner une première commande test, et démarrer la relation. Sans engagement.</p>
+        <div class="actions">
+          <a href="#form-pro" class="btn btn--lg">Ouvrir un compte pro
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="en-preparation.html" class="btn btn--line btn--lg">Parler à un sommelier</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- TEMPLATE: footer.php -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="inner">
+
+      <div class="brand-col">
+        <div class="wordmark">Beryte<em> Wine</em></div>
+        <div class="tagline">Le vin dans toute sa splendeur</div>
+        <p class="addr">
+          22 rue Saint-Exupéry<br>
+          33290 Blanquefort · France<br><br>
+          <a href="mailto:beryte.wine.shop@outlook.com" style="color:var(--c-gold)" class="link-under">beryte.wine.shop@outlook.com</a><br>
+          <a href="tel:+33000000000" style="color:rgba(246,241,231,.85)" class="link-under">+33 5 00 00 00 00</a>
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="widget-area" id="footer-widget-1">
+        <h5>La cave</h5>
+        <ul>
+          <li><a href="nos-vins.html">Tous les vins</a></li>
+          <li><a href="nos-vins.html?cat=champagnes">Champagnes</a></li>
+          <li><a href="nos-vins.html?cat=spiritueux">Spiritueux</a></li>
+          <li><a href="nos-vins.html?cat=bieres">Bières craft</a></li>
+          <li><a href="nos-vins.html?focus=coffrets">Coffrets</a></li>
+          <li><a href="nos-vins.html?focus=pepites">Pépites</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-2">
+        <h5>Terroirs</h5>
+        <ul>
+          <li><a href="nos-vins.html?pays=italie">Italie</a></li>
+          <li><a href="nos-vins.html?pays=espagne">Espagne</a></li>
+          <li><a href="nos-vins.html?pays=argentine">Argentine</a></li>
+          <li><a href="nos-vins.html?pays=france">France</a></li>
+          <li><a href="liban.html">Liban</a></li>
+          <li><a href="nos-vins.html?pays=portugal">Portugal</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-3">
+        <h5>Maison</h5>
+        <ul>
+          <li><a href="en-preparation.html">Notre histoire</a></li>
+          <li><a href="liban.html">L'ADN Liban</a></li>
+          <li><a href="en-preparation.html">Le Journal</a></li>
+          <li><a href="en-preparation.html">Club Beryte</a></li>
+          <li><a href="pro.html">Espace pro</a></li>
+          <li><a href="en-preparation.html">Boutique physique</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-4">
+        <h5>Aide</h5>
+        <ul>
+          <li><a href="en-preparation.html">Nous contacter</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Paiement & sécurité</a></li>
+          <li><a href="#">Conservation</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="en-preparation.html">Mon compte</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div>© 2026 Beryte Wine · SIRET 123 456 789 00012 · Licence IV</div>
+      <div class="pay">
+        <span>VISA</span>
+        <span>MASTERCARD</span>
+        <span>APPLE PAY</span>
+        <span>ALMA 3×</span>
+        <span>PAYPAL</span>
+      </div>
+      <div>
+        <a href="#">Mentions légales</a> ·
+        <a href="#">CGV</a> ·
+        <a href="#">Confidentialité</a> ·
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TEMPLATE: template-parts/evin-banner.php -->
+<div class="evin" role="note">
+  <em>L'abus d'alcool est dangereux pour la santé</em> · à consommer avec modération
+</div>
+
+<script>
+/* ===============================================================
+   Beryte Pro · minimal JS
+   =============================================================== */
+
+/* Age gate cookie check */
+(function(){
+  try {
+    if (localStorage.getItem('beryte_age_ok') === '1' || document.cookie.indexOf('beryte_age_ok=1') !== -1) {
+      var g = document.getElementById('ageGate');
+      if (g) g.style.display = 'none';
+    }
+  } catch(e){}
+})();
+
+/* Sticky header shadow on scroll */
+(function(){
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function onScroll(){
+    if (window.scrollY > 8) h.classList.add('is-scrolled');
+    else h.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
+      if (e.isIntersecting) {
+        setTimeout(function(){ e.target.classList.add('is-visible'); }, i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+
+/* Cart count bump */
+function bumpCart(){
+  var c = document.getElementById('cartCount');
+  if (!c) return;
+  var n = parseInt(c.textContent || '0', 10);
+  c.textContent = (n + 1);
+  c.classList.add('bump');
+  setTimeout(function(){ c.classList.remove('bump'); }, 420);
+}
+</script>
+
+</body>
+</html>

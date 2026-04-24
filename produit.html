@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A1410">
+<meta name="description" content="Château Musar 2016 · Bekaa, Liban · Vin rouge iconique. Cinsault, Cabernet, Carignan. Médaillé Decanter Gold 2024. Livraison 48h par Beryte Wine.">
+<title>Château Musar 2016 · Bekaa, Liban · Beryte Wine</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+/* =====================================================
+   PRODUIT · styles spécifiques single-product
+   ===================================================== */
+
+/* ========== BREADCRUMB ========== */
+.breadcrumb {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-cream);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+}
+.breadcrumb .woocommerce-breadcrumb { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--c-ink-2); transition: color var(--t-fast) var(--ease); }
+.breadcrumb a:hover { color: var(--c-purple); }
+.breadcrumb .sep { color: var(--c-ink-4); }
+.breadcrumb .current { color: var(--c-purple); }
+
+/* ========== PRODUCT HERO (layout grille 6fr/5fr) ========== */
+.product-hero { padding: clamp(40px, 5vw, 80px) 0 clamp(48px, 5vw, 88px); }
+.product-hero-grid {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  gap: clamp(32px, 4vw, 72px);
+  align-items: start;
+}
+
+/* ===== GALERIE IMAGE ===== */
+.woocommerce-product-gallery {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.gallery-main {
+  position: relative;
+  background: radial-gradient(ellipse at 30% 20%, var(--c-purple) 0%, var(--c-purple-deep) 55%, #140611 100%);
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+}
+.gallery-main::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .5;
+  pointer-events: none;
+}
+.gallery-main::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 85%, rgba(200,169,107,.28), transparent 60%);
+  pointer-events: none;
+}
+.gallery-main img.wp-post-image {
+  height: 78%;
+  width: auto;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.65));
+  transition: transform var(--t-slow) var(--ease);
+}
+.gallery-main:hover img.wp-post-image { transform: translateY(-4px) scale(1.02); }
+
+.gallery-main .pill-float {
+  position: absolute;
+  top: 18px; left: 18px;
+  z-index: 3;
+}
+.gallery-main .zoom-ico {
+  position: absolute;
+  top: 18px; right: 18px;
+  z-index: 3;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(246,241,231,.1);
+  border: 1px solid rgba(246,241,231,.3);
+  color: var(--c-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  transition: all var(--t-fast) var(--ease);
+}
+.gallery-main .zoom-ico:hover { background: var(--c-gold); border-color: var(--c-gold); color: var(--c-ink); }
+.gallery-main .zoom-ico svg { width: 16px; height: 16px; }
+
+.medaillon-float {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  z-index: 3;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--c-cream);
+  color: var(--c-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  border: 1.5px solid var(--c-gold);
+  box-shadow: 0 14px 30px rgba(0,0,0,.5);
+  transform: rotate(-6deg);
+}
+.medaillon-float .y { font-family: var(--ff-display); font-style: italic; font-size: 22px; color: var(--c-purple); line-height: 1; font-variant-numeric: oldstyle-nums; }
+.medaillon-float .t { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-ink-2); margin-top: 4px; font-feature-settings: 'smcp'; font-weight: 600; line-height: 1.3; }
+
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.thumb {
+  aspect-ratio: 1;
+  background: var(--c-cream-2);
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.thumb:hover { border-color: var(--c-purple); transform: translateY(-2px); }
+.thumb.is-active { border-color: var(--c-purple); border-width: 2px; }
+.thumb img { height: 82%; width: auto; filter: drop-shadow(0 6px 10px rgba(26,20,16,.15)); }
+.thumb.thumb-gradient-1 { background: radial-gradient(ellipse at 40% 40%, #3E1B2E 0%, var(--c-purple-deep) 70%); }
+.thumb.thumb-gradient-2 { background: radial-gradient(ellipse at 50% 50%, var(--c-warm) 0%, #3E2818 70%); }
+.thumb.thumb-gradient-3 { background: radial-gradient(ellipse at 40% 40%, #4F5A3A 0%, #1F2614 70%); }
+.thumb .thumb-label { position: absolute; bottom: 6px; left: 6px; right: 6px; font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-cream); text-align: center; font-feature-settings: 'smcp'; opacity: .75; font-weight: 600; }
+
+/* ===== SUMMARY entry-summary ===== */
+.summary.entry-summary { display: flex; flex-direction: column; gap: 18px; }
+.summary .eyebrow { margin-bottom: 4px; }
+.product_title.entry-title {
+  font-family: var(--ff-display);
+  font-size: clamp(38px, 4.2vw, 52px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  color: var(--c-ink);
+  font-variation-settings: 'opsz' 72;
+  margin: 0;
+}
+.product_title em { font-style: italic; color: var(--c-purple); font-weight: 350; }
+
+.product-subline {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--c-warm);
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1.4;
+}
+
+.product-origin { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-block: 1px solid var(--c-border); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-ink-2); font-weight: var(--fw-semi); font-feature-settings: 'smcp'; }
+
+.product-rating { display: flex; align-items: center; gap: 12px; }
+.stars { display: inline-flex; gap: 2px; color: var(--c-gold-deep); }
+.stars svg { width: 15px; height: 15px; fill: currentColor; }
+.rating-text { font-size: 12.5px; color: var(--c-ink-2); letter-spacing: 0.02em; }
+.rating-text em { color: var(--c-purple); font-style: italic; font-family: var(--ff-display); }
+
+.woocommerce-product-details__short-description { font-size: 15px; line-height: 1.65; color: var(--c-ink-2); max-width: 48ch; }
+.woocommerce-product-details__short-description em { color: var(--c-purple); font-style: italic; font-family: var(--ff-display); }
+
+.price-wrap { display: flex; align-items: baseline; gap: 16px; padding-top: 8px; }
+.summary .price {
+  font-family: var(--ff-display);
+  font-size: clamp(40px, 4vw, 48px);
+  font-weight: 350;
+  color: var(--c-ink);
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1;
+  font-variation-settings: 'opsz' 72;
+}
+.summary .price .cents { font-size: 22px; color: var(--c-ink-2); }
+.summary .price-old {
+  font-family: var(--ff-display);
+  font-size: 22px;
+  color: var(--c-ink-3);
+  text-decoration: line-through;
+  font-variant-numeric: oldstyle-nums;
+}
+.summary .save-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  background: var(--c-wine);
+  color: var(--c-cream);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+}
+
+.stock-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--c-ink-2);
+  padding: 12px 16px;
+  background: rgba(79,90,58,.06);
+  border-left: 2px solid var(--c-success);
+}
+.stock-indicator .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-success);
+  flex-shrink: 0;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+.stock-indicator strong { color: var(--c-success); font-weight: var(--fw-semi); }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+
+/* ===== CART FORM ===== */
+.cart {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  padding: 16px 0;
+  border-block: 1px solid var(--c-border);
+  flex-wrap: wrap;
+}
+.quantity {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--c-ink);
+  height: 56px;
+}
+.quantity button {
+  width: 48px; height: 100%;
+  background: transparent;
+  color: var(--c-ink);
+  font-size: 18px;
+  font-weight: var(--fw-semi);
+  transition: background var(--t-fast) var(--ease);
+}
+.quantity button:hover { background: var(--c-cream-2); }
+.quantity input.qty {
+  width: 52px;
+  height: 100%;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-family: var(--ff-display);
+  font-size: 17px;
+  font-variant-numeric: oldstyle-nums;
+  color: var(--c-ink);
+  -moz-appearance: textfield;
+  padding: 0;
+}
+.quantity input.qty::-webkit-outer-spin-button,
+.quantity input.qty::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.single_add_to_cart_button { flex: 1; min-width: 220px; }
+
+.fav-btn {
+  width: 56px; height: 56px;
+  border: 1px solid var(--c-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-ink);
+  transition: all var(--t-med) var(--ease);
+  background: transparent;
+  flex-shrink: 0;
+}
+.fav-btn:hover { background: var(--c-purple); border-color: var(--c-purple); color: var(--c-cream); }
+.fav-btn svg { width: 18px; height: 18px; }
+.fav-btn.is-faved { background: var(--c-purple); color: var(--c-cream); border-color: var(--c-purple); }
+
+/* ===== ACCORDS METS (hero) ===== */
+.accords-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.accords-hero .h-label {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+}
+.accords-hero .items {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.accord-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--c-border-2);
+  background: var(--c-cream);
+  font-size: 12.5px;
+  color: var(--c-ink-2);
+  transition: all var(--t-fast) var(--ease);
+}
+.accord-chip:hover { border-color: var(--c-purple); background: var(--c-white); color: var(--c-ink); }
+.accord-chip .emo { font-size: 15px; }
+
+/* product_meta (WooCommerce) */
+.product_meta { font-size: 11.5px; color: var(--c-ink-3); letter-spacing: 0.14em; text-transform: uppercase; font-feature-settings: 'smcp'; padding-top: 14px; border-top: 1px solid var(--c-border); display: flex; gap: 18px; flex-wrap: wrap; }
+.product_meta span { display: inline-flex; gap: 6px; }
+.product_meta span strong { color: var(--c-ink); font-weight: var(--fw-semi); }
+
+/* ========== TRUST STRIP INLINE ========== */
+.trust-inline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 28px 0;
+  border-block: 1px solid var(--c-border);
+  background: var(--c-cream);
+}
+.trust-inline-item { display: flex; gap: 14px; align-items: center; }
+.trust-inline-item .ico {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--c-cream-2);
+  border: 1px solid var(--c-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold-deep);
+  flex-shrink: 0;
+}
+.trust-inline-item .ico svg { width: 16px; height: 16px; stroke-width: 1.7; }
+.trust-inline-item .txt { display: flex; flex-direction: column; line-height: 1.3; }
+.trust-inline-item .t1 { font-size: 13px; color: var(--c-ink); font-weight: var(--fw-semi); letter-spacing: -0.005em; }
+.trust-inline-item .t2 { font-size: 11px; color: var(--c-ink-3); letter-spacing: 0.04em; }
+
+/* ========== STICKY TABS ========== */
+.tabs-nav {
+  position: sticky;
+  top: 65px;
+  z-index: 30;
+  background: rgba(246,241,231,.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--c-border);
+  box-shadow: 0 1px 0 var(--c-border);
+}
+.tabs-nav .inner {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-nav .inner::-webkit-scrollbar { display: none; }
+.tab-btn {
+  position: relative;
+  padding: 22px 22px;
+  font-size: 11px;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ink-2);
+  white-space: nowrap;
+  font-feature-settings: 'smcp';
+  transition: color var(--t-fast) var(--ease);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  left: 20px; right: 20px; bottom: 0;
+  height: 2px;
+  background: var(--c-purple);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-med) var(--ease);
+}
+.tab-btn:hover { color: var(--c-ink); }
+.tab-btn.is-active { color: var(--c-purple); }
+.tab-btn.is-active::after { transform: scaleX(1); }
+
+/* ========== DESCRIPTION SECTION ========== */
+.panel { padding: clamp(64px, 7vw, 104px) 0; scroll-margin-top: 140px; }
+.panel--alt { background: var(--c-cream-2); }
+
+.desc-wrap { max-width: 980px; margin: 0 auto; }
+.desc-head { text-align: center; margin-bottom: clamp(32px, 4vw, 56px); }
+.desc-head h2 { font-family: var(--ff-display); font-size: clamp(30px, 3.2vw, 44px); font-weight: 300; letter-spacing: -0.025em; line-height: 1.05; font-variation-settings: 'opsz' 72; }
+.desc-head h2 em { color: var(--c-purple); font-style: italic; font-weight: 350; }
+
+.desc-lead {
+  font-family: var(--ff-display);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 350;
+  line-height: 1.5;
+  color: var(--c-ink);
+  max-width: 58ch;
+  margin: 0 auto 44px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 48;
+}
+.desc-lead em { color: var(--c-purple); font-style: italic; }
+
+.desc-cols {
+  column-count: 2;
+  column-gap: 48px;
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: var(--c-ink-2);
+}
+.desc-cols p { margin: 0 0 18px; break-inside: avoid; }
+.desc-cols p.drop-cap { margin-top: 0; }
+.desc-cols p em { color: var(--c-purple); font-style: italic; font-family: var(--ff-display); }
+
+.desc-quote {
+  margin: clamp(48px, 5vw, 72px) auto;
+  max-width: 780px;
+  text-align: center;
+  padding: 32px 24px;
+  position: relative;
+}
+.desc-quote::before, .desc-quote::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 1px;
+  background: var(--c-gold);
+}
+.desc-quote::before { top: 0; }
+.desc-quote::after { bottom: 0; }
+.desc-quote p {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.24;
+  color: var(--c-purple);
+  letter-spacing: -0.015em;
+  margin: 0;
+  font-weight: 350;
+  font-variation-settings: 'opsz' 72;
+}
+.desc-quote p::before { content: "« "; color: var(--c-gold); }
+.desc-quote p::after { content: " »"; color: var(--c-gold); }
+.desc-quote cite {
+  display: block;
+  margin-top: 18px;
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-family: var(--ff-body);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+}
+
+/* ========== FICHE TECHNIQUE ========== */
+.fiche-wrap { max-width: 980px; margin: 0 auto; }
+.fiche-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  border-top: 1px solid var(--c-border-2);
+}
+.fiche-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-border);
+  align-items: baseline;
+}
+.fiche-row .k {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+}
+.fiche-row .v {
+  font-family: var(--ff-display);
+  font-size: 16px;
+  color: var(--c-ink);
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: -0.005em;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 32;
+}
+.fiche-row .v em { color: var(--c-purple); font-style: italic; }
+.fiche-row .v .pill { margin-left: 6px; vertical-align: middle; }
+
+/* ========== DEGUSTATION ========== */
+.degust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.degust-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  padding: clamp(28px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: all var(--t-med) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.degust-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--c-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-med) var(--ease);
+}
+.degust-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.degust-card:hover::before { transform: scaleX(1); }
+.degust-card .ico {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--c-cream);
+  border: 1px solid var(--c-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-purple);
+}
+.degust-card .ico svg { width: 26px; height: 26px; stroke-width: 1.4; }
+.degust-card .numero {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--c-gold-deep);
+  font-variant-numeric: oldstyle-nums;
+  font-feature-settings: 'smcp';
+  text-transform: uppercase;
+  font-weight: var(--fw-semi);
+}
+.degust-card h3 {
+  font-family: var(--ff-display);
+  font-size: 28px;
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-variation-settings: 'opsz' 48;
+}
+.degust-card h3 em { color: var(--c-purple); font-style: italic; }
+.degust-card p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--c-ink-2);
+  margin: 0;
+}
+.degust-card p em { color: var(--c-purple); font-style: italic; font-family: var(--ff-display); }
+.degust-card .notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--c-border);
+}
+.degust-card .notes span {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  padding: 4px 10px;
+  border: 1px solid var(--c-border-2);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+}
+
+/* ========== ACCORDS METS (section) ========== */
+.accords-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.accord-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--t-med) var(--ease);
+}
+.accord-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--c-border-3); }
+.accord-card .photo {
+  aspect-ratio: 4/3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  overflow: hidden;
+}
+.accord-card .photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .45;
+  pointer-events: none;
+}
+.accord-card .photo .emo { position: relative; z-index: 2; filter: drop-shadow(0 8px 14px rgba(0,0,0,.25)); }
+.accord-card.photo-1 .photo { background: radial-gradient(ellipse at 40% 40%, #8B5A3C 0%, #3F2818 80%); }
+.accord-card.photo-2 .photo { background: radial-gradient(ellipse at 50% 40%, var(--c-warm) 0%, #6E2B52 80%); }
+.accord-card.photo-3 .photo { background: radial-gradient(ellipse at 50% 50%, #A88547 0%, #4F5A3A 80%); }
+.accord-card.photo-4 .photo { background: radial-gradient(ellipse at 50% 50%, #3F1731 0%, #0F0A07 80%); }
+.accord-card .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 8px; }
+.accord-card .kicker { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-gold-deep); font-weight: var(--fw-semi); font-feature-settings: 'smcp'; }
+.accord-card h4 { font-family: var(--ff-display); font-size: 20px; font-weight: 350; letter-spacing: -0.015em; line-height: 1.15; font-variation-settings: 'opsz' 32; }
+.accord-card h4 em { color: var(--c-purple); font-style: italic; }
+.accord-card p { font-size: 13.5px; color: var(--c-ink-2); line-height: 1.55; margin: 6px 0 0; }
+
+/* ========== DOMAINE BAND ========== */
+.domaine-band {
+  background: radial-gradient(ellipse at 30% 20%, var(--c-purple) 0%, var(--c-purple-deep) 55%, #130611 100%);
+  color: var(--c-cream);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 8vw, 128px) 0;
+  scroll-margin-top: 140px;
+}
+.domaine-band::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: .5;
+  pointer-events: none;
+}
+.domaine-band::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 85% 80%, rgba(200,169,107,.18), transparent 55%);
+  pointer-events: none;
+}
+.domaine-band > .container { position: relative; z-index: 2; }
+.domaine-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.domaine-grid .eyebrow { color: var(--c-gold); margin-bottom: 24px; }
+.domaine-grid .eyebrow::before { background: var(--c-gold); }
+.domaine-grid h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--c-cream);
+  margin-bottom: 28px;
+  font-variation-settings: 'opsz' 144;
+  max-width: 14ch;
+}
+.domaine-grid h2 em { color: var(--c-gold); font-style: italic; font-weight: 350; }
+.domaine-grid .prose p {
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: rgba(246,241,231,.82);
+  margin: 0 0 16px;
+  max-width: 58ch;
+}
+.domaine-grid .prose p em { color: var(--c-gold); font-style: italic; font-family: var(--ff-display); }
+.domaine-grid .sig-founder {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 24px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(200,169,107,.28);
+}
+.sig-founder .av {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--c-gold);
+  color: var(--c-purple-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 48;
+}
+.sig-founder .who { display: flex; flex-direction: column; }
+.sig-founder .n { font-weight: 600; font-size: 13.5px; color: var(--c-cream); }
+.sig-founder .r { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,241,231,.65); font-feature-settings: 'smcp'; margin-top: 3px; }
+
+.domaine-chiffres {
+  background: rgba(246,241,231,.04);
+  border: 1px solid rgba(200,169,107,.28);
+  padding: clamp(28px, 3vw, 44px);
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+.domaine-chiffres::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--c-gold);
+}
+.domaine-chiffres h3 {
+  font-family: var(--ff-body);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+  margin-bottom: 28px;
+}
+.chiffres-list { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+.chiffre {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(246,241,231,.12);
+}
+.chiffre:nth-last-child(-n+2) { border-bottom: 0; padding-bottom: 0; }
+.chiffre .n {
+  font-family: var(--ff-display);
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 300;
+  color: var(--c-gold);
+  line-height: 1;
+  font-variant-numeric: oldstyle-nums;
+  font-variation-settings: 'opsz' 72;
+  letter-spacing: -0.025em;
+}
+.chiffre .n em { color: var(--c-cream); font-style: italic; }
+.chiffre .l {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,241,231,.6);
+  font-weight: var(--fw-semi);
+  font-feature-settings: 'smcp';
+  margin-top: 10px;
+}
+
+/* ========== RAIL SIMILAIRES ========== */
+.rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .product-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .woocommerce-product-gallery { position: static; }
+  .trust-inline { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .desc-cols { column-count: 1; }
+  .degust-grid { grid-template-columns: 1fr; }
+  .accords-grid { grid-template-columns: 1fr 1fr; }
+  .domaine-grid { grid-template-columns: 1fr; }
+  .fiche-grid { grid-template-columns: 1fr; gap: 0; }
+  .rail { grid-template-columns: repeat(2, 1fr); }
+  .tabs-nav { top: 58px; }
+}
+@media (max-width: 680px) {
+  .product_title.entry-title { font-size: 36px; }
+  .summary .price { font-size: 36px; }
+  .trust-inline { grid-template-columns: 1fr; }
+  .accords-grid { grid-template-columns: 1fr; }
+  .rail { grid-template-columns: 1fr; }
+  .tab-btn { padding: 18px 16px; font-size: 10.5px; }
+  .cart { flex-wrap: wrap; }
+  .single_add_to_cart_button { width: 100%; }
+  .chiffres-list { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .medaillon-float { width: 78px; height: 78px; bottom: 14px; right: 14px; }
+  .medaillon-float .y { font-size: 18px; }
+  .medaillon-float .t { font-size: 7px; }
+}
+</style>
+</head>
+<body class="product single-product postid-musar-2016 woocommerce woocommerce-page">
+
+<!-- ================================================================
+     TEMPLATE: template-parts/age-gate.php
+     Age verification (18+). WP: hook into woocommerce-age-gate plugin
+     ================================================================ -->
+<div class="age-gate" id="ageGate" role="dialog" aria-labelledby="ageGateTitle" aria-modal="true">
+  <div class="age-gate-card">
+    <div class="logo-wrap"><img src="assets/logo.png" alt="Beryte Wine"></div>
+    <h2 id="ageGateTitle">Avez-vous <em>l'âge légal</em><br>pour entrer ?</h2>
+    <p>L'accès à notre cave est réservé aux personnes majeures. En entrant, vous confirmez avoir 18 ans ou plus.</p>
+    <div class="actions">
+      <button type="button" class="btn btn--line" onclick="document.getElementById('ageGate').style.display='none'; try{localStorage.setItem('beryte_age_ok','1');}catch(e){}">Oui, j'entre</button>
+      <a href="https://www.google.com" class="btn btn--ghost" style="color:var(--c-ink); border-color:var(--c-border-2)">Non, quitter</a>
+    </div>
+    <p class="evin-note">L'abus d'alcool est dangereux pour la santé</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     TEMPLATE: header.php
+     Top ticker + sticky header + util nav
+     ================================================================ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+    <!-- Duplication pour la boucle infinie -->
+    <span><span class="ticker-dot"></span>Livraison offerte dès <em>120 €</em></span>
+    <span><span class="ticker-dot"></span>Conseil sommelier <em>gratuit</em></span>
+    <span><span class="ticker-dot"></span>Expédition <em>sous 48h</em></span>
+    <span><span class="ticker-dot"></span>Paiement en <em>3× sans frais</em> dès 150 €</span>
+    <span><span class="ticker-dot"></span><em>120+ domaines</em> en direct</span>
+    <span><span class="ticker-dot"></span>Caviste indépendant <em>Blanquefort · 33</em></span>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <ul class="menu primary-menu" style="display:flex; gap:28px; list-style:none; margin:0; padding:0;">
+        <li class="menu-item"><a href="nos-vins.html" class="is-active">Nos vins</a></li>
+        <li class="menu-item"><a href="nos-vins.html#champagnes">Champagnes</a></li>
+        <li class="menu-item"><a href="nos-vins.html#spiritueux">Spiritueux</a></li>
+        <li class="menu-item"><a href="liban.html">Liban</a></li>
+        <li class="menu-item"><a href="en-preparation.html">Journal</a></li>
+        <li class="menu-item"><a href="pro.html">Espace pro</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="Beryte Wine · retour à l'accueil">
+      <span class="beryte">Beryte</span>
+      <span class="wine">Wine</span>
+    </a>
+
+    <div class="util-nav">
+      <button type="button" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="hidden-mobile">Rechercher</span>
+      </button>
+      <a href="en-preparation.html" aria-label="Connexion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="hidden-mobile">Compte</span>
+      </a>
+      <button type="button" class="cart-toggle" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="hidden-mobile">Panier</span>
+        <span class="cart-count" id="cartCount">2</span>
+      </button>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/breadcrumb.php
+     WooCommerce breadcrumb navigation
+     ================================================================ -->
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <div class="container">
+    <div class="woocommerce-breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span class="sep">›</span>
+      <a href="nos-vins.html">Nos vins</a>
+      <span class="sep">›</span>
+      <a href="liban.html">Liban</a>
+      <span class="sep">›</span>
+      <span class="current">Château Musar 2016</span>
+    </div>
+  </div>
+</nav>
+
+<main id="main" role="main">
+
+  <!-- ================================================================
+       TEMPLATE: single-product.php
+       Produit · Château Musar 2016 · Bekaa, Liban
+       ================================================================ -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="product-hero-grid">
+
+        <!-- ======= LEFT · galerie bouteille ======= -->
+        <div class="woocommerce-product-gallery" data-reveal>
+
+          <figure class="gallery-main has-grain">
+            <span class="pill pill--iconic pill-float">Iconique</span>
+            <button type="button" class="zoom-ico" aria-label="Agrandir l'image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+            </button>
+            <img src="assets/bottle-bordeaux.svg" alt="Château Musar 2016 · Bekaa, Liban" class="wp-post-image" id="mainGalleryImage">
+            <div class="medaillon-float" aria-label="Médaille Decanter Gold 2024">
+              <span class="y">Gold</span>
+              <span class="t">Decanter<br>2024</span>
+            </div>
+          </figure>
+
+          <div class="gallery-thumbs" role="tablist">
+            <button type="button" class="thumb is-active" data-thumb="0" aria-label="Bouteille face">
+              <img src="assets/bottle-bordeaux.svg" alt="Face">
+              <span class="thumb-label">Face</span>
+            </button>
+            <button type="button" class="thumb thumb-gradient-1" data-thumb="1" aria-label="Contre-étiquette">
+              <img src="assets/bottle-bordeaux.svg" alt="Contre" style="opacity:.85;transform:scaleX(-1)">
+              <span class="thumb-label">Contre-étiquette</span>
+            </button>
+            <button type="button" class="thumb thumb-gradient-2" data-thumb="2" aria-label="Coffret">
+              <img src="assets/bottle-bordeaux.svg" alt="Coffret" style="opacity:.8">
+              <span class="thumb-label">Coffret</span>
+            </button>
+            <button type="button" class="thumb thumb-gradient-3" data-thumb="3" aria-label="Domaine">
+              <img src="assets/bottle-bordeaux.svg" alt="Domaine" style="opacity:.7">
+              <span class="thumb-label">Domaine</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- ======= RIGHT · summary entry-summary ======= -->
+        <div class="summary entry-summary" data-reveal>
+
+          <span class="eyebrow">Signature Liban · Bekaa</span>
+
+          <h1 class="product_title entry-title">Château <em>Musar</em><br>2016</h1>
+
+          <p class="product-subline">Cinsault, Cabernet, Carignan · 75cl · 14% vol.</p>
+
+          <div class="product-origin">
+            <span class="flag">LB</span>
+            <span>Bekaa · Liban</span>
+            <span style="color:var(--c-ink-4)">·</span>
+            <span>Millésime 2016</span>
+          </div>
+
+          <div class="product-rating">
+            <span class="stars" aria-label="4,8 étoiles sur 5">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <span class="rating-text"><em>4,8/5</em> · 47 avis clients</span>
+          </div>
+
+          <div class="woocommerce-product-details__short-description">
+            Icône absolue du vin libanais, le Musar 2016 incarne la poésie Hochar. Un rouge <em>patient, fumé, méditerranéen,</em> élevé dix-huit mois sous bois français puis ciselé par plusieurs années de bouteille. Une matière qui traverse les décennies.
+          </div>
+
+          <div class="price-wrap">
+            <span class="price woocommerce-Price-amount amount">64<span class="cents">,50 €</span></span>
+            <span class="price-old">72,00 €</span>
+            <span class="save-tag">-10%</span>
+          </div>
+
+          <div class="stock-indicator">
+            <span class="dot" aria-hidden="true"></span>
+            <span><strong>12 bouteilles en stock</strong> · expédition sous 48h depuis Blanquefort</span>
+          </div>
+
+          <form class="cart" action="#" method="post" enctype="multipart/form-data">
+            <div class="quantity">
+              <button type="button" class="qty-minus" aria-label="Diminuer la quantité">−</button>
+              <input type="number" class="qty" name="quantity" id="qtyInput" value="1" min="1" max="12" step="1" aria-label="Quantité">
+              <button type="button" class="qty-plus" aria-label="Augmenter la quantité">+</button>
+            </div>
+            <button type="submit" class="btn btn--purple btn--lg single_add_to_cart_button" onclick="event.preventDefault(); bumpCart();">
+              Ajouter au panier
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+            <button type="button" class="fav-btn" aria-label="Ajouter aux favoris" onclick="this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+          </form>
+
+          <div class="accords-hero">
+            <span class="h-label">Se marie avec</span>
+            <div class="items">
+              <span class="accord-chip"><span class="emo">🥩</span> Agneau</span>
+              <span class="accord-chip"><span class="emo">🦆</span> Canard</span>
+              <span class="accord-chip"><span class="emo">🧀</span> Fromages affinés</span>
+              <span class="accord-chip"><span class="emo">🍫</span> Chocolat noir</span>
+            </div>
+          </div>
+
+          <div class="product_meta">
+            <span class="sku_wrapper">Réf. <strong>MUSAR-2016-75</strong></span>
+            <span class="posted_in">Catégorie <strong>Liban · Bekaa</strong></span>
+            <span class="tagged_as">Garde <strong>2040</strong></span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Trust strip inline · 4 items
+       ================================================================ -->
+  <section class="trust-inline-section">
+    <div class="container">
+      <div class="trust-inline" data-reveal>
+        <div class="trust-inline-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
+          <div class="txt"><span class="t1">Livraison 48h</span><span class="t2">France métropolitaine</span></div>
+        </div>
+        <div class="trust-inline-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+          <div class="txt"><span class="t1">Paiement 3×</span><span class="t2">Sans frais dès 150 €</span></div>
+        </div>
+        <div class="trust-inline-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div>
+          <div class="txt"><span class="t1">Conseil sommelier</span><span class="t2">Gratuit, par téléphone</span></div>
+        </div>
+        <div class="trust-inline-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div>
+          <div class="txt"><span class="t1">Retours 14 jours</span><span class="t2">Satisfait ou remboursé</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/single-product-tabs.php
+       Sticky tabs navigation · scrollspy
+       ================================================================ -->
+  <nav class="tabs-nav" id="tabsNav" aria-label="Onglets produit">
+    <div class="container">
+      <div class="inner" role="tablist">
+        <button type="button" class="tab-btn is-active" data-tab="description" role="tab">Description</button>
+        <button type="button" class="tab-btn" data-tab="fiche" role="tab">Fiche technique</button>
+        <button type="button" class="tab-btn" data-tab="degustation" role="tab">Dégustation</button>
+        <button type="button" class="tab-btn" data-tab="accords" role="tab">Accords mets</button>
+        <button type="button" class="tab-btn" data-tab="domaine" role="tab">Domaine</button>
+        <button type="button" class="tab-btn" data-tab="avis" role="tab">Avis</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======= TAB 1 · DESCRIPTION ======= -->
+  <section class="panel" id="description">
+    <div class="container">
+      <div class="desc-wrap" data-reveal>
+        <header class="desc-head">
+          <span class="eyebrow">L'histoire du vin</span>
+          <h2 style="margin-top:16px">Un rouge <em>patient</em>,<br>une mémoire <em>liquide</em>.</h2>
+        </header>
+
+        <p class="desc-lead">
+          Nous gardons pour Musar une tendresse particulière. C'est la bouteille qui nous a tous, un jour, fait comprendre que le vin n'appartient pas aux frontières. Au Liban, il appartient <em>à la patience.</em>
+        </p>
+
+        <div class="desc-cols">
+          <p class="drop-cap">Mille neuf cent trente, la famille Hochar plante ses premières vignes dans la Bekaa. Presque un siècle plus tard, le domaine traverse toutes les guerres sans jamais rater un millésime. Le 2016 est un petit miracle d'équilibre : des étés francs, des nuits d'altitude qui préservent la tension, des vendanges tardives à la cueillette sélective. Serge Hochar, parti en 2014, aurait reconnu là sa signature.</p>
+
+          <p>Dans le verre, une robe rubis sombre aux reflets grenat, déjà marquée par l'élevage et par ces huit années en cave. Le nez commence par se taire, puis libère progressivement la prune confite, le cèdre du Liban, le cuir fumé, la rose fanée. C'est un <em>vin qui se mérite</em>, qui demande la carafe et qui récompense la patience.</p>
+
+          <p>En bouche, l'attaque est soyeuse, presque sucrée. Le milieu déploie une matière dense mais ciselée, portée par des tanins fins, une acidité fraîche qui tient la route jusqu'en finale. Le Cinsault apporte le velours, le Cabernet la structure, le Carignan cette <em>trace méditerranéenne</em> qui signe tous les grands Musar. Finale longue, savoureuse, qui revient par vagues sur le fumé et la figue sèche.</p>
+
+          <p>Pour nous, c'est une bouteille qui se prête à la longue garde. Nous recommandons de la garder encore six à douze ans pour lui laisser atteindre son apogée, ou d'ouvrir celle-ci aujourd'hui avec deux à trois heures de carafe. Dans les deux cas, on tient entre les mains quelque chose qui dépasse largement le seul plaisir du vin.</p>
+        </div>
+
+        <blockquote class="desc-quote">
+          <p>Le vin libanais, c'est l'endurance faite liquide</p>
+          <cite>Serge Hochar · 1939-2014</cite>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TAB 2 · FICHE TECHNIQUE ======= -->
+  <section class="panel panel--alt" id="fiche">
+    <div class="container">
+      <div class="fiche-wrap" data-reveal>
+        <header class="desc-head" style="text-align:left">
+          <span class="eyebrow">Fiche technique</span>
+          <h2 style="margin-top:16px">Les <em>données</em> de la bouteille</h2>
+        </header>
+
+        <div class="fiche-grid">
+          <div class="fiche-row"><span class="k">Domaine</span><span class="v">Château Musar</span></div>
+          <div class="fiche-row"><span class="k">Pays</span><span class="v">Liban</span></div>
+          <div class="fiche-row"><span class="k">Région</span><span class="v">Bekaa · Ghazir</span></div>
+          <div class="fiche-row"><span class="k">Appellation</span><span class="v">Bekaa Valley</span></div>
+          <div class="fiche-row"><span class="k">Cépages</span><span class="v">Cinsault, Cabernet S., Carignan</span></div>
+          <div class="fiche-row"><span class="k">Millésime</span><span class="v">2016</span></div>
+          <div class="fiche-row"><span class="k">Élevage</span><span class="v">18 mois · fûts français</span></div>
+          <div class="fiche-row"><span class="k">Alcool</span><span class="v">14% vol.</span></div>
+          <div class="fiche-row"><span class="k">Sucres résiduels</span><span class="v">2,1 g/L</span></div>
+          <div class="fiche-row"><span class="k">Service</span><span class="v">Carafer 2h · 17-18°C</span></div>
+          <div class="fiche-row"><span class="k">Garde</span><span class="v"><em>Jusqu'en 2040</em></span></div>
+          <div class="fiche-row"><span class="k">Température</span><span class="v">17°C · cave fraîche</span></div>
+          <div class="fiche-row"><span class="k">Contenance</span><span class="v">75cl · bouteille Bordeaux</span></div>
+          <div class="fiche-row"><span class="k">Agriculture</span><span class="v">Raisonnée <span class="pill pill--bio">Bio en conversion</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TAB 3 · DÉGUSTATION ======= -->
+  <section class="panel" id="degustation">
+    <div class="container">
+      <header class="desc-head" data-reveal>
+        <span class="eyebrow">Notes de dégustation</span>
+        <h2 style="margin-top:16px">Le <em>profil sensoriel</em></h2>
+      </header>
+
+      <div class="degust-grid" data-reveal>
+
+        <article class="degust-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M8 4h8"/><path d="M6 9c0-2 2-3 6-3s6 1 6 3c0 4-2 7-6 13-4-6-6-9-6-13Z"/></svg>
+          </div>
+          <span class="numero">N° 01 · Le nez</span>
+          <h3>Un bouquet <em>fumé</em>,<br>épicé, méditerranéen.</h3>
+          <p>Prune confite et figue sèche en ouverture, puis le cèdre du Liban, le cuir patiné, le tabac blond. Après aération, arrivent la rose fanée, le poivre noir, une trace de <em>garrigue lointaine.</em></p>
+          <div class="notes">
+            <span>Prune</span>
+            <span>Cèdre</span>
+            <span>Cuir</span>
+            <span>Tabac</span>
+            <span>Rose</span>
+            <span>Poivre</span>
+          </div>
+        </article>
+
+        <article class="degust-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14c1.5 2 6.5 2 8 0"/><circle cx="9" cy="10" r=".8" fill="currentColor"/><circle cx="15" cy="10" r=".8" fill="currentColor"/></svg>
+          </div>
+          <span class="numero">N° 02 · La bouche</span>
+          <h3>Soyeuse à l'attaque,<br><em>dense</em> et ciselée.</h3>
+          <p>Attaque veloutée, presque sucrée sur la prune. Le milieu de bouche déploie une matière dense mais jamais lourde, portée par des tanins fins et une <em>acidité fraîche</em> qui structure l'ensemble.</p>
+          <div class="notes">
+            <span>Soyeux</span>
+            <span>Tanins fins</span>
+            <span>Fraîcheur</span>
+            <span>Équilibre</span>
+            <span>14% vol.</span>
+          </div>
+        </article>
+
+        <article class="degust-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
+          </div>
+          <span class="numero">N° 03 · La finale</span>
+          <h3>Longue, <em>savoureuse</em>,<br>qui revient par vagues.</h3>
+          <p>La finale revient par vagues sur le fumé, la figue sèche et une trace minérale crayeuse. Persistance <em>au-dessus de la minute</em>, signature des grands Musar. Une bouteille qui continue de parler des heures après le service.</p>
+          <div class="notes">
+            <span>Longue</span>
+            <span>Fumé</span>
+            <span>Figue</span>
+            <span>Minéralité</span>
+            <span>60+ sec</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TAB 4 · ACCORDS METS ======= -->
+  <section class="panel panel--alt" id="accords">
+    <div class="container">
+      <header class="desc-head" data-reveal>
+        <span class="eyebrow">À table</span>
+        <h2 style="margin-top:16px">Les <em>accords</em> qui rendent justice au Musar</h2>
+      </header>
+
+      <div class="accords-grid" data-reveal>
+
+        <article class="accord-card photo-1">
+          <div class="photo"><span class="emo">🥩</span></div>
+          <div class="body">
+            <span class="kicker">Accord royal</span>
+            <h4>Agneau <em>confit 7h</em></h4>
+            <p>L'épaule d'agneau confite à basse température, au thym et à l'ail, accrocheuse sur les tanins fumés du Musar. L'accord phare de nos dimanches libanais.</p>
+          </div>
+        </article>
+
+        <article class="accord-card photo-2">
+          <div class="photo"><span class="emo">🦆</span></div>
+          <div class="body">
+            <span class="kicker">Accord classique</span>
+            <h4>Canard à <em>l'orange</em></h4>
+            <p>La sauce bigarade trouve un répondant parfait dans la prune confite du vin. Une fraîcheur d'agrumes qui réveille l'élevage sous bois.</p>
+          </div>
+        </article>
+
+        <article class="accord-card photo-3">
+          <div class="photo"><span class="emo">🧀</span></div>
+          <div class="body">
+            <span class="kicker">Accord audacieux</span>
+            <h4>Roquefort <em>affiné</em></h4>
+            <p>Le contraste salé-sucré du bleu persillé et la matière dense du Musar. Un grand classique des caves du Sud-Ouest, qui vaut le détour.</p>
+          </div>
+        </article>
+
+        <article class="accord-card photo-4">
+          <div class="photo"><span class="emo">🍫</span></div>
+          <div class="body">
+            <span class="kicker">Accord dessert</span>
+            <h4>Chocolat noir <em>70%</em></h4>
+            <p>Une tablette grand cru, un carré, un verre : l'amertume du cacao rencontre les notes fumées et le tanin du vin. À tenter au moins une fois.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TAB 5 · DOMAINE ======= -->
+  <section class="domaine-band has-grain" id="domaine">
+    <div class="container">
+      <div class="domaine-grid">
+
+        <div class="text" data-reveal>
+          <span class="eyebrow">Le domaine · Ghazir</span>
+          <h2>Château <em>Musar</em>,<br>la résistance <em>faite vin</em>.</h2>
+
+          <div class="prose">
+            <p>Fondé en 1930 par Gaston Hochar au retour d'un séjour à Bordeaux, Musar est la première cave à chais souterrains du Liban. Le domaine se construit dans la Bekaa, plaine d'altitude de <em>900 mètres</em>, entre la chaîne du Mont-Liban et l'Anti-Liban. Six mille ans de viticulture en arrière-plan.</p>
+
+            <p>Serge Hochar reprend la maison en 1959. Pendant les quinze années de guerre civile libanaise, il traverse les lignes de front à chaque vendange pour ramener le raisin à Ghazir. Un seul millésime manqué en quinze ans. C'est cette <em>entêtement poétique</em> qui fait la légende Musar, reconnu à Londres dès les années 1970.</p>
+
+            <p>Aujourd'hui, la troisième génération, Gaston et Marc Hochar, poursuit l'œuvre avec une philosophie intacte : peu d'interventions, des vinifications longues, un élevage patient, et cette signature qui ne ressemble à aucun autre vin du monde.</p>
+          </div>
+
+          <div class="sig-founder">
+            <div class="av">H</div>
+            <div class="who">
+              <span class="n">Famille Hochar · 3 générations</span>
+              <span class="r">Ghazir · Bekaa · depuis 1930</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="domaine-chiffres" data-reveal>
+          <h3>Le domaine en chiffres</h3>
+          <div class="chiffres-list">
+            <div class="chiffre">
+              <span class="n">19<em>30</em></span>
+              <span class="l">Année de fondation</span>
+            </div>
+            <div class="chiffre">
+              <span class="n">180<em>ha</em></span>
+              <span class="l">Surface du vignoble</span>
+            </div>
+            <div class="chiffre">
+              <span class="n">9<em>00</em>m</span>
+              <span class="l">Altitude moyenne</span>
+            </div>
+            <div class="chiffre">
+              <span class="n">3<em>M</em></span>
+              <span class="l">Bouteilles par an</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TAB 6 · AVIS (placeholder) ======= -->
+  <section class="panel" id="avis">
+    <div class="container">
+      <header class="desc-head" data-reveal>
+        <span class="eyebrow">Avis clients · 47 retours vérifiés</span>
+        <h2 style="margin-top:16px"><em>4,8/5</em> · note moyenne</h2>
+      </header>
+
+      <div class="degust-grid" data-reveal>
+
+        <article class="degust-card">
+          <div class="ico" style="background:var(--c-purple);color:var(--c-gold);border-color:var(--c-gold)">
+            <span style="font-family:var(--ff-display);font-style:italic;font-size:22px">C</span>
+          </div>
+          <span class="numero">★★★★★ · 12 avril 2026</span>
+          <h3><em>Mémorable.</em></h3>
+          <p>Ouverte pour un dîner d'anniversaire, deux heures en carafe. Le vin s'est ouvert lentement sur des notes de figue et de cèdre. Accord parfait avec l'agneau de sept heures. Une bouteille qui restera gravée.</p>
+          <div class="notes"><span>Clémence D.</span><span>Bordeaux</span><span>Achat vérifié</span></div>
+        </article>
+
+        <article class="degust-card">
+          <div class="ico" style="background:var(--c-gold-deep);color:var(--c-cream);border-color:var(--c-gold-deep)">
+            <span style="font-family:var(--ff-display);font-style:italic;font-size:22px">M</span>
+          </div>
+          <span class="numero">★★★★★ · 28 mars 2026</span>
+          <h3>La <em>signature</em> Musar.</h3>
+          <p>On retrouve tout ce qui fait le domaine : le fumé, la profondeur, cette tension méditerranéenne. Je garde encore deux bouteilles pour dans cinq ans. Le 2016 a du potentiel.</p>
+          <div class="notes"><span>Mathieu R.</span><span>Lyon</span><span>Achat vérifié</span></div>
+        </article>
+
+        <article class="degust-card">
+          <div class="ico" style="background:var(--c-warm);color:var(--c-cream);border-color:var(--c-gold)">
+            <span style="font-family:var(--ff-display);font-style:italic;font-size:22px">S</span>
+          </div>
+          <span class="numero">★★★★☆ · 18 mars 2026</span>
+          <h3>Beau, à <em>laisser</em> encore.</h3>
+          <p>Jeune pour ce domaine, clairement. À ouvrir trois heures à l'avance ou mieux, à garder encore cinq à six ans en cave. Service Beryte impeccable, emballage soigné.</p>
+          <div class="notes"><span>Sofiane K.</span><span>Paris</span><span>Achat vérifié</span></div>
+        </article>
+
+      </div>
+
+      <div style="text-align:center;margin-top:48px" data-reveal>
+        <a href="#" class="btn btn--line">Lire les 47 avis
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TEMPLATE: template-parts/upsells.php
+       Produits similaires · Woo upsells
+       ================================================================ -->
+  <section class="section section--cream-2 upsells products">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Dans la même cave</span>
+          <h2 class="display-lg">Les vins qui <em>dialoguent</em><br>avec le Musar</h2>
+        </div>
+        <div class="subhead">
+          D'autres rouges charnus, d'autres vins méditerranéens, d'autres frères libanais. Notre sélection pour prolonger la soirée ou construire une verticale maison.
+          <br><a href="nos-vins.html" class="link-under" style="display:inline-block;margin-top:16px">Voir toute la cave →</a>
+        </div>
+      </header>
+
+      <div class="rail woocommerce-loop" data-reveal>
+
+        <!-- Produit similaire 1 · Tourelles Syrah 2022 -->
+        <a href="produit.html" class="pcard product type-product" data-product-id="tourelles-syrah-2022">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--new">Nouveau</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-bordeaux.svg" alt="Domaine des Tourelles Syrah 2022" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">LB</span>
+              <span class="region">Bekaa · Liban</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Domaine des Tourelles Syrah 2022</h3>
+            <span class="pmeta">Syrah assemblée · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">8<span class="cents">,15 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Produit similaire 2 · Marquis des Beys 2020 -->
+        <a href="produit.html" class="pcard product type-product" data-product-id="tourelles-marquis-2020">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--rare">Signature Liban</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-bordeaux.svg" alt="Marquis des Beys 2020" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">LB</span>
+              <span class="region">Bekaa · Liban</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Marquis des Beys 2020</h3>
+            <span class="pmeta">Syrah, Cabernet · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">19<span class="cents">,00 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Produit similaire 3 · Benanti Etna Rosso 2023 -->
+        <a href="produit.html" class="pcard product type-product" data-product-id="benanti-etna-2023">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--new">Nouveau</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-burgundy.svg" alt="Benanti Etna Rosso 2023" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">IT</span>
+              <span class="region">Sicile · Etna DOC</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Benanti Etna Rosso 2023</h3>
+            <span class="pmeta">Nerello Mascalese · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">14<span class="cents">,75 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Produit similaire 4 · Gianni Brunelli Brunello 2020 -->
+        <a href="produit.html" class="pcard product type-product" data-product-id="gianni-brunello-2020">
+          <div class="media">
+            <div class="pill-group">
+              <span class="pill pill--iconic">Iconique</span>
+            </div>
+            <button class="fave" type="button" aria-label="Ajouter aux favoris" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle('is-faved')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <img src="assets/bottle-bordeaux.svg" alt="Gianni Brunelli Brunello 2020" loading="lazy">
+          </div>
+          <div class="body">
+            <div class="eyebrow-row">
+              <span class="flag">IT</span>
+              <span class="region">Toscane · Brunello DOCG</span>
+            </div>
+            <h3 class="woocommerce-loop-product__title">Gianni Brunelli Brunello 2020</h3>
+            <span class="pmeta">Sangiovese · 75cl</span>
+            <div class="foot">
+              <div>
+                <span class="price woocommerce-Price-amount amount">57<span class="cents">,50 €</span></span>
+              </div>
+              <button class="atc add_to_cart_button ajax_add_to_cart" onclick="event.preventDefault();event.stopPropagation();bumpCart()">
+                Ajouter
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================================================
+     TEMPLATE: footer.php
+     ================================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="inner">
+
+      <div class="brand-col">
+        <div class="wordmark">Beryte<em> Wine</em></div>
+        <div class="tagline">Le vin dans toute sa splendeur</div>
+        <p class="addr">
+          22 rue Saint-Exupéry<br>
+          33290 Blanquefort · France<br><br>
+          <a href="mailto:beryte.wine.shop@outlook.com" style="color:var(--c-gold)" class="link-under">beryte.wine.shop@outlook.com</a><br>
+          <a href="tel:+33000000000" style="color:rgba(246,241,231,.85)" class="link-under">+33 5 00 00 00 00</a>
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="widget-area" id="footer-widget-1">
+        <h5>La cave</h5>
+        <ul>
+          <li><a href="nos-vins.html">Tous les vins</a></li>
+          <li><a href="nos-vins.html?cat=champagnes">Champagnes</a></li>
+          <li><a href="nos-vins.html?cat=spiritueux">Spiritueux</a></li>
+          <li><a href="nos-vins.html?cat=bieres">Bières craft</a></li>
+          <li><a href="nos-vins.html?focus=coffrets">Coffrets</a></li>
+          <li><a href="nos-vins.html?focus=pepites">Pépites</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-2">
+        <h5>Terroirs</h5>
+        <ul>
+          <li><a href="nos-vins.html?pays=italie">Italie</a></li>
+          <li><a href="nos-vins.html?pays=espagne">Espagne</a></li>
+          <li><a href="nos-vins.html?pays=argentine">Argentine</a></li>
+          <li><a href="nos-vins.html?pays=france">France</a></li>
+          <li><a href="liban.html">Liban</a></li>
+          <li><a href="nos-vins.html?pays=portugal">Portugal</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-3">
+        <h5>Maison</h5>
+        <ul>
+          <li><a href="en-preparation.html">Notre histoire</a></li>
+          <li><a href="liban.html">L'ADN Liban</a></li>
+          <li><a href="en-preparation.html">Le Journal</a></li>
+          <li><a href="en-preparation.html">Club Beryte</a></li>
+          <li><a href="pro.html">Espace pro</a></li>
+          <li><a href="en-preparation.html">Boutique physique</a></li>
+        </ul>
+      </div>
+
+      <div class="widget-area" id="footer-widget-4">
+        <h5>Aide</h5>
+        <ul>
+          <li><a href="en-preparation.html">Nous contacter</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Paiement & sécurité</a></li>
+          <li><a href="#">Conservation</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="en-preparation.html">Mon compte</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div>© 2026 Beryte Wine · SIRET 123 456 789 00012 · Licence IV</div>
+      <div class="pay">
+        <span>VISA</span>
+        <span>MASTERCARD</span>
+        <span>APPLE PAY</span>
+        <span>ALMA 3×</span>
+        <span>PAYPAL</span>
+      </div>
+      <div>
+        <a href="#">Mentions légales</a> ·
+        <a href="#">CGV</a> ·
+        <a href="#">Confidentialité</a> ·
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     TEMPLATE: template-parts/evin-banner.php (Loi Evin sticky)
+     ================================================================ -->
+<div class="evin" role="note">
+  <em>L'abus d'alcool est dangereux pour la santé</em> · à consommer avec modération
+</div>
+
+<script>
+/* ===============================================================
+   Beryte Single-Product · minimal JS
+   =============================================================== */
+
+/* Age gate cookie check */
+(function(){
+  try {
+    if (localStorage.getItem('beryte_age_ok') === '1' || document.cookie.indexOf('beryte_age_ok=1') !== -1) {
+      var g = document.getElementById('ageGate');
+      if (g) g.style.display = 'none';
+    }
+  } catch(e){}
+})();
+
+/* Sticky header shadow on scroll */
+(function(){
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function onScroll(){
+    if (window.scrollY > 8) h.classList.add('is-scrolled');
+    else h.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
+      if (e.isIntersecting) {
+        setTimeout(function(){ e.target.classList.add('is-visible'); }, i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+
+/* Cart count bump */
+function bumpCart(){
+  var c = document.getElementById('cartCount');
+  if (!c) return;
+  var n = parseInt(c.textContent || '0', 10);
+  c.textContent = (n + 1);
+  c.classList.add('bump');
+  setTimeout(function(){ c.classList.remove('bump'); }, 420);
+}
+
+/* ===============================================================
+   Quantity selector [-/+] functional
+   =============================================================== */
+(function(){
+  var input = document.getElementById('qtyInput');
+  var minus = document.querySelector('.qty-minus');
+  var plus  = document.querySelector('.qty-plus');
+  if (!input || !minus || !plus) return;
+  var min = parseInt(input.getAttribute('min') || '1', 10);
+  var max = parseInt(input.getAttribute('max') || '99', 10);
+  minus.addEventListener('click', function(){
+    var v = parseInt(input.value || '1', 10);
+    if (v > min) input.value = v - 1;
+  });
+  plus.addEventListener('click', function(){
+    var v = parseInt(input.value || '1', 10);
+    if (v < max) input.value = v + 1;
+  });
+})();
+
+/* ===============================================================
+   Gallery thumbs · switch main image
+   =============================================================== */
+(function(){
+  var thumbs = document.querySelectorAll('.gallery-thumbs .thumb');
+  thumbs.forEach(function(t){
+    t.addEventListener('click', function(){
+      thumbs.forEach(function(x){ x.classList.remove('is-active'); });
+      t.classList.add('is-active');
+    });
+  });
+})();
+
+/* ===============================================================
+   Tabs · smooth scroll on click + scrollspy active state
+   =============================================================== */
+(function(){
+  var tabs = document.querySelectorAll('.tab-btn');
+  var sections = Array.from(document.querySelectorAll('.panel, #domaine')).filter(Boolean);
+  var tabsNav = document.getElementById('tabsNav');
+
+  if (!tabs.length || !sections.length) return;
+
+  // Click · smooth scroll to section
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var id = tab.getAttribute('data-tab');
+      var target = document.getElementById(id);
+      if (!target) return;
+      var offset = (tabsNav ? tabsNav.offsetHeight : 60) + 64;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  // Scrollspy · activate tab matching current section
+  function setActive(id){
+    tabs.forEach(function(t){
+      if (t.getAttribute('data-tab') === id) t.classList.add('is-active');
+      else t.classList.remove('is-active');
+    });
+  }
+
+  function onScroll(){
+    var offset = (tabsNav ? tabsNav.offsetHeight : 60) + 120;
+    var current = sections[0] ? sections[0].id : null;
+    for (var i = 0; i < sections.length; i++){
+      var s = sections[i];
+      var rect = s.getBoundingClientRect();
+      if (rect.top - offset <= 0) current = s.id;
+    }
+    if (current) setActive(current);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
