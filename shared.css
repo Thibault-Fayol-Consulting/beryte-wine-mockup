@@ -488,6 +488,7 @@ a.link-under:hover::after { transform: scaleX(1); transform-origin: left; }
   top: 0;
   z-index: 50;
   background: rgba(246,241,231,.96);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--c-border);
@@ -718,28 +719,41 @@ a.link-under:hover::after { transform: scaleX(1); transform-origin: left; }
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: none;
+  border: 1px solid var(--c-border-2);
+  border-radius: 50%;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: all var(--t-fast) var(--ease);
 }
+.burger:hover { background: var(--c-ink); border-color: var(--c-ink); }
+.burger:hover span,
+.burger:hover span::before,
+.burger:hover span::after { background: var(--c-cream); }
 .burger span {
   display: block;
-  width: 22px; height: 1.5px;
+  width: 20px; height: 2px;
   background: var(--c-ink);
   position: relative;
   transition: background var(--t-fast) var(--ease);
+  border-radius: 2px;
 }
 .burger span::before,
 .burger span::after {
   content: "";
   position: absolute;
   left: 0;
-  width: 22px; height: 1.5px;
+  width: 20px; height: 2px;
   background: var(--c-ink);
-  transition: transform var(--t-med) var(--ease), top var(--t-med) var(--ease);
+  border-radius: 2px;
+  transition: transform var(--t-med) var(--ease), top var(--t-med) var(--ease), background var(--t-fast) var(--ease);
 }
-.burger span::before { top: -7px; }
-.burger span::after { top: 7px; }
+.burger span::before { top: -6px; }
+.burger span::after { top: 6px; }
+.burger.is-open { background: var(--c-purple); border-color: var(--c-purple); }
 .burger.is-open span { background: transparent; }
+.burger.is-open span::before,
+.burger.is-open span::after { background: var(--c-cream); }
 .burger.is-open span::before { top: 0; transform: rotate(45deg); }
 .burger.is-open span::after  { top: 0; transform: rotate(-45deg); }
 
@@ -1086,6 +1100,7 @@ body.no-scroll { overflow: hidden; }
   position: fixed;
   left: 0; right: 0; bottom: 0;
   background: rgba(26,20,16,.93);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   color: var(--c-cream);
   font-size: 11px;
@@ -1106,6 +1121,7 @@ body.no-scroll { overflow: hidden; }
   position: fixed;
   inset: 0;
   background: rgba(26,20,16,.82);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 100;
   display: flex;
